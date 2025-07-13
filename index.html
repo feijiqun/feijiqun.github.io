@@ -31,6 +31,8 @@
           media=all>
     <link rel=stylesheet id=modern-enhancements-css href=https://feijiqun.github.io/assets/css/modern-enhancements.css type=text/css
           media=all>
+    <link rel=stylesheet id=background-options-css href=https://feijiqun.github.io/assets/css/background-options.css type=text/css
+          media=all>
     <link rel=stylesheet href=https://use.fontawesome.com/releases/v6.7.2/css/all.css>
     <script src=https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js></script>
     <script type=text/javascript src=https://feijiqun.github.io/assets/js/content-search.js
@@ -39,14 +41,118 @@
     <script src=../sw.js></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7353728415772033"
             crossorigin=anonymous></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M50CZY3LGQ"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RHVG82T5BT"></script>
     <script>window.dataLayer = window.dataLayer || [];
 
     function gtag() {
         dataLayer.push(arguments)
     }
 
-    gtag("js", new Date), gtag("config", "G-M50CZY3LGQ")</script>
+    gtag("js", new Date), gtag("config", "G-RHVG82T5BT")</script>
+    <script>
+    // 背景切换功能
+    let currentBackground = 1;
+    const totalBackgrounds = 6;
+    
+    // 添加内联样式来强制覆盖
+    const style = document.createElement('style');
+    style.textContent = `
+        body.background-option-1.io-grey-mode .main-content.grid-bg,
+        body.background-option-1.io-grey-mode .page-container .main-content.grid-bg {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 50%, #90caf9 100%) !important;
+        }
+        body.background-option-2.io-grey-mode .main-content.grid-bg,
+        body.background-option-2.io-grey-mode .page-container .main-content.grid-bg {
+            background: #f0f8ff !important;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(102, 126, 234, 0.15) 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, rgba(118, 75, 162, 0.15) 2px, transparent 2px) !important;
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+        }
+        body.background-option-3.io-grey-mode .main-content.grid-bg,
+        body.background-option-3.io-grey-mode .page-container .main-content.grid-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        }
+        body.background-option-4.io-grey-mode .main-content.grid-bg,
+        body.background-option-4.io-grey-mode .page-container .main-content.grid-bg {
+            background: #f0f8ff !important;
+            background-image: 
+                linear-gradient(45deg, rgba(102, 126, 234, 0.12) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(118, 75, 162, 0.12) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(102, 126, 234, 0.12) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(118, 75, 162, 0.12) 75%) !important;
+            background-size: 35px 35px;
+            background-position: 0 0, 0 17.5px, 17.5px -17.5px, -17.5px 0px;
+        }
+        body.background-option-5.io-grey-mode .main-content.grid-bg,
+        body.background-option-5.io-grey-mode .page-container .main-content.grid-bg {
+            background: #f5f5f5 !important;
+        }
+        body.background-option-6.io-grey-mode .main-content.grid-bg,
+        body.background-option-6.io-grey-mode .page-container .main-content.grid-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        }
+    `;
+    document.head.appendChild(style);
+    
+    function switchBackground() {
+        const body = document.body;
+        
+        // 移除当前背景类
+        body.classList.remove(`background-option-${currentBackground}`);
+        
+        // 切换到下一个背景
+        currentBackground = currentBackground % totalBackgrounds + 1;
+        
+        // 添加新背景类
+        body.classList.add(`background-option-${currentBackground}`);
+        
+        // 更新按钮提示
+        const backgroundSwitch = document.getElementById('background-switch');
+        const backgroundNames = [
+            '简洁渐变',
+            '点状图案', 
+            '波浪纹理',
+            '几何图案',
+            '纯色背景',
+            '云朵纹理'
+        ];
+        backgroundSwitch.setAttribute('title', `当前: ${backgroundNames[currentBackground-1]}`);
+        
+        // 保存用户偏好
+        localStorage.setItem('preferred-background', currentBackground);
+        
+        // 添加切换动画
+        body.style.transition = 'background 0.5s ease';
+        setTimeout(() => {
+            body.style.transition = '';
+        }, 500);
+    }
+    
+    // 页面加载时恢复用户偏好
+    document.addEventListener('DOMContentLoaded', function() {
+        const savedBackground = localStorage.getItem('preferred-background');
+        if (savedBackground) {
+            const body = document.body;
+            body.classList.remove('background-option-1');
+            body.classList.add(`background-option-${savedBackground}`);
+            currentBackground = parseInt(savedBackground);
+            
+            // 更新按钮提示
+            const backgroundSwitch = document.getElementById('background-switch');
+            const backgroundNames = [
+                '简洁渐变',
+                '点状图案', 
+                '波浪纹理',
+                '几何图案',
+                '纯色背景',
+                '云朵纹理'
+            ];
+            backgroundSwitch.setAttribute('title', `当前: ${backgroundNames[currentBackground-1]}`);
+        }
+    });
+    </script>
     <script type=text/javascript>(function (e, t, n, s, o, i, a) {
         e[n] = e[n] || function () {
             (e[n].q = e[n].q || []).push(arguments)
@@ -92,8 +198,27 @@
     <script>navigator.serviceWorker != null && navigator.serviceWorker.register("/sw.js").then(function (e) {
         console.log("Registered events at scope: ", e.scope)
     })</script>
+    <style>
+    /* 白天模式：黑字 */
+    body.io-grey-mode .header-big .word .wordname {
+        color: #222 !important;
+        -webkit-text-stroke: 0 !important;
+        text-shadow: none !important;
+        font-weight: bold !important;
+        background: none !important;
+    }
+
+    /* 夜间模式：白字 */
+    body.io-black-mode .header-big .word .wordname {
+        color: #fff !important;
+        -webkit-text-stroke: 0 !important;
+        text-shadow: none !important;
+        font-weight: bold !important;
+        background: none !important;
+    }
+    </style>
 </head>
-<body class=io-grey-mode>
+<body class="io-grey-mode background-option-1">
 <div id=loading>
     <style>.loader {
         width: 250px;
@@ -2574,7 +2699,10 @@
                    data-toggle=tooltip data-placement=left title=快速查询><i class="fa fa-search"></i></a>
                 <a href=javascript: onclick='window.location.href="javascript:switchNightMode()"'
                    class="btn rounded-circle switch-dark-mode m-1" id=yejian data-toggle=tooltip data-placement=left
-                   title=日间模式><i class="mode-ico fas fa-moon"></i></a></div>
+                   title=日间模式><i class="mode-ico fas fa-moon"></i></a>
+                <a href=javascript: onclick='switchBackground()'
+                   class="btn rounded-circle switch-background m-1" id=background-switch data-toggle=tooltip data-placement=left
+                   title=切换背景><i class="background-ico fas fa-palette"></i></a></div>
             <div class=footer-inner>
                 <div class=footer-text><strong>版权所有©2025 <a href=https://feijiqun.github.io/ target=_blank>feijiqun</a>，保留一切权利。<br>本站内容收集自互联网，如有内容侵犯了你的权益，请联系删除相关内容。<br><span
                         id=busuanzi_container_site_pv>本站总访问量：<span

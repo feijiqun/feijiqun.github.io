@@ -543,4 +543,46 @@
 .warning {
     border-color: var(--warning-color) !important;
     box-shadow: 0 0 0 2px rgba(250, 112, 154, 0.2) !important;
+}
+
+/* 背景切换按钮样式 */
+.switch-background {
+    background: var(--primary-gradient) !important;
+    color: white !important;
+    border: none !important;
+    transition: var(--transition);
+}
+
+.switch-background:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: var(--shadow-lg);
+}
+
+.background-ico {
+    font-size: 1.1rem;
+    transition: var(--transition);
+}
+
+.switch-background:hover .background-ico {
+    transform: rotate(15deg);
+}
+
+/* 深色模式下的背景切换按钮 */
+.io-black-mode .switch-background {
+    background: var(--primary-gradient) !important;
+    color: white !important;
+}
+
+/* 背景切换动画 - 移除全局body过渡以避免冲突 */
+/* body {
+    transition: background 0.5s ease, background-color 0.5s ease;
+} */
+
+/* 背景切换时的内容过渡 */
+.content-site {
+    transition: opacity 0.3s ease;
+}
+
+body.background-transitioning .content-site {
+    opacity: 0.8;
 } 

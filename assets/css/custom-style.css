@@ -282,13 +282,14 @@ footer.main-footer .footer-text a:hover {
     color: var(--accent-color);
 }
 
-/* 网格背景优化 */
-.io-grey-mode .page-container .grid-bg {
-    background-image: 
-        linear-gradient(rgba(102, 126, 234, 0.03) 1px, transparent 0), 
-        linear-gradient(90deg, rgba(102, 126, 234, 0.03) 1px, transparent 0);
-    background-size: 20px 20px;
-    background-color: var(--gray-100);
+/* 现代化背景优化 - 已移至 background-options.css */
+/* 背景样式现在由 background-options.css 控制，支持6种不同的背景方案 */
+
+/* 渐变动画 - 保留用于其他元素 */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* 导航 Logo 图标裁剪边角 */
@@ -727,6 +728,263 @@ footer.main-footer .footer-text a:hover {
 .io-black-mode .sidebar-menu-inner a:hover {
     background: var(--primary-gradient);
     color: white;
+}
+
+/* 卡片内容终极可读性增强 */
+.url-card .url-body,
+.url-card .url-body * {
+    background: rgba(255,255,255,0.98) !important;
+    color: #222 !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.06) !important;
+}
+
+.io-black-mode .url-card .url-body,
+.io-black-mode .url-card .url-body * {
+    background: rgba(30,32,40,0.98) !important;
+    color: #fff !important;
+    text-shadow: none !important;
+}
+
+/* 首页推荐卡片背景和字体可读性增强 */
+.header-big .word .wordsub {
+    background: rgba(255,255,255,0.98) !important;
+    color: #222 !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.08) !important;
+}
+
+.io-black-mode .header-big .word .wordsub {
+    background: rgba(30,32,40,0.98) !important;
+    color: #fff !important;
+    text-shadow: none !important;
+}
+
+/* 首页推荐卡片字体可读性增强 */
+.wordname,
+.wordsub,
+.text-muted,
+.text-xs,
+.url-card .wordname,
+.url-card .wordsub {
+    color: #222 !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.06) !important;
+}
+
+.io-black-mode .wordname,
+.io-black-mode .wordsub,
+.io-black-mode .text-muted,
+.io-black-mode .text-xs,
+.io-black-mode .url-card .wordname,
+.io-black-mode .url-card .wordsub {
+    color: #fff !important;
+    text-shadow: none !important;
+}
+
+/* 终极强力修复首页推荐卡片字体和背景 */
+.header-big .word .wordsub,
+.header-big .word .wordsub *,
+.header-big .wordsub,
+.header-big .wordsub * {
+    background: rgba(255,255,255,0.98) !important;
+    color: #222 !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.08) !important;
+}
+
+.io-black-mode .header-big .word .wordsub,
+.io-black-mode .header-big .word .wordsub *,
+.io-black-mode .header-big .wordsub,
+.io-black-mode .header-big .wordsub * {
+    background: rgba(30,32,40,0.98) !important;
+    color: #fff !important;
+    text-shadow: none !important;
+}
+
+.wordname {
+    color: #222 !important;
+    font-weight: bold !important;
+    background: none !important;
+}
+
+/* 白天模式：黑字（全站通用） */
+body.io-grey-mode .wordname {
+    color: #222 !important;
+    -webkit-text-stroke: 0 !important;
+    text-shadow: none !important;
+    font-weight: bold !important;
+    background: none !important;
+}
+
+/* 夜间模式：白字（全站通用） */
+body.io-black-mode .wordname {
+    color: #fff !important;
+    -webkit-text-stroke: 0 !important;
+    text-shadow: none !important;
+    font-weight: bold !important;
+    background: none !important;
+}
+
+/* 只要是按钮里的文字都变色（假设都在 .url-card .url-info strong 里） */
+.url-card .url-info strong,
+.url-card .url-info p {
+    color: #222 !important;
+    font-weight: bold !important;
+}
+.io-black-mode .url-card .url-info strong,
+.io-black-mode .url-card .url-info p {
+    color: #fff !important;
+}
+
+/* 白天模式：卡片标题黑字 */
+body.io-grey-mode .url-card .url-info strong {
+    color: #222 !important;
+}
+
+/* 夜间模式：卡片标题白字 */
+body.io-black-mode .url-card .url-info strong {
+    color: #fff !important;
+}
+
+/* 清理并唯一指定 wordname 颜色，确保主题切换生效 */
+body.io-grey-mode .wordname {
+    color: #222 !important;
+    background: none !important;
+    text-shadow: none !important;
+}
+body.io-black-mode .wordname {
+    color: #fff !important;
+    background: none !important;
+    text-shadow: none !important;
+}
+
+/* ===== 全站通用夜间模式文字颜色控制 ===== */
+/* 白天模式：所有文字为黑色 */
+body.io-grey-mode,
+body:not(.io-black-mode) {
+    color: #222 !important;
+}
+
+body.io-grey-mode *,
+body:not(.io-black-mode) * {
+    color: inherit !important;
+}
+
+/* 夜间模式：所有文字为白色 */
+body.io-black-mode {
+    color: #fff !important;
+}
+
+body.io-black-mode * {
+    color: inherit !important;
+}
+
+/* 特殊处理一些可能有自己颜色的元素 */
+body.io-black-mode .text-muted {
+    color: #ccc !important;
+}
+
+body.io-black-mode .text-secondary {
+    color: #aaa !important;
+}
+
+/* 确保链接在夜间模式下也可见 */
+body.io-black-mode a {
+    color: #fff !important;
+}
+
+body.io-black-mode a:hover {
+    color: var(--primary-color) !important;
+}
+
+/* 确保按钮文字在夜间模式下可见 */
+body.io-black-mode .btn {
+    color: #fff !important;
+}
+
+/* 确保卡片内容在夜间模式下可见 */
+body.io-black-mode .card,
+body.io-black-mode .card * {
+    color: #fff !important;
+}
+
+/* 确保侧边栏文字在夜间模式下可见 */
+body.io-black-mode .sidebar-menu-inner,
+body.io-black-mode .sidebar-menu-inner * {
+    color: #fff !important;
+}
+
+/* 确保导航栏文字在夜间模式下可见 */
+body.io-black-mode .navbar,
+body.io-black-mode .navbar * {
+    color: #fff !important;
+}
+
+/* ===== 终极夜间模式文字颜色控制 ===== */
+/* 覆盖主CSS文件中的夜间模式规则 */
+body.io-black-mode,
+body.io-black-mode *,
+body.io-black-mode a:not(.btn),
+body.io-black-mode .button > a {
+    color: #fff !important;
+}
+
+/* 白天模式：确保所有文字为黑色 */
+body.io-grey-mode,
+body.io-grey-mode *,
+body:not(.io-black-mode),
+body:not(.io-black-mode) * {
+    color: #222 !important;
+}
+
+/* 特殊处理一些元素 */
+body.io-black-mode .text-muted {
+    color: #ccc !important;
+}
+
+body.io-black-mode .text-secondary {
+    color: #aaa !important;
+}
+
+/* 确保链接在夜间模式下可见且可点击 */
+body.io-black-mode a {
+    color: #fff !important;
+}
+
+body.io-black-mode a:hover {
+    color: var(--primary-color) !important;
+}
+
+/* 确保所有卡片内容在夜间模式下可见 */
+body.io-black-mode .card,
+body.io-black-mode .card *,
+body.io-black-mode .url-card,
+body.io-black-mode .url-card * {
+    color: #fff !important;
+}
+
+/* 确保侧边栏所有内容在夜间模式下可见 */
+body.io-black-mode .sidebar-nav-inner,
+body.io-black-mode .sidebar-nav-inner *,
+body.io-black-mode .sidebar-menu-inner,
+body.io-black-mode .sidebar-menu-inner * {
+    color: #fff !important;
+}
+
+/* 确保导航栏所有内容在夜间模式下可见 */
+body.io-black-mode .navbar,
+body.io-black-mode .navbar *,
+body.io-black-mode .page-header,
+body.io-black-mode .page-header * {
+    color: #fff !important;
+}
+
+/* 确保按钮文字在夜间模式下可见 */
+body.io-black-mode .btn {
+    color: #fff !important;
+}
+
+/* 确保搜索框文字在夜间模式下可见 */
+body.io-black-mode #search-text,
+body.io-black-mode .search-type input:checked + label {
+    color: #fff !important;
 }
 
 
