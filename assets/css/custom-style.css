@@ -987,6 +987,56 @@ body.io-black-mode .search-type input:checked + label {
     color: #fff !important;
 }
 
+/* 公告栏背景完全透明，去除阴影和边框 */
+.bulletin-big,
+.bulletin-big .card,
+.bulletin-big .card-body,
+#bulletin_box,
+#bulletin_box .card,
+#bulletin_box .card-body {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+.bulletin-big::before,
+.bulletin-big::after,
+.bulletin-big .card::before,
+.bulletin-big .card::after,
+.bulletin-big .card-body::before,
+.bulletin-big .card-body::after {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    content: none !important;
+}
+
+/* 强力覆盖公告栏所有背景、边框、阴影，确保完全透明 */
+.bulletin,
+.bulletin * {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* 终极覆盖公告栏背景色和圆角 */
+.header-big:not(.no-bg) #bulletin_box .card-body {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+}
+
+/* 终极极致覆盖公告栏背景色和圆角，连内联样式都覆盖 */
+#bulletin_box .card-body,
+#bulletin_box .card-body[style] {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+}
+
 
 
 

@@ -26,7 +26,7 @@
     <link rel=stylesheet href=https://use.fontawesome.com/releases/v6.7.2/css/all.css>
     <script src=https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js></script>
     <script type=text/javascript src=https://feijiqun.github.io/assets/js/content-search.js id=content-search-js></script>
-    <script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
+
     <script src=../sw.js></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7353728415772033" crossorigin=anonymous></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RHVG82T5BT"></script>
@@ -75,6 +75,58 @@
     <script>navigator.serviceWorker != null && navigator.serviceWorker.register("/sw.js").then(function (e) {
         console.log("Registered events at scope: ", e.scope)
     })</script>
+    <style>
+    #bulletin_box {
+        border: 1px solid #fff !important;
+        border-radius: 8px !important;
+    }
+    </style>
+    <style>
+    /* 终极覆盖 bulletin_box 里 a.overflowClip_1 的背景色 */
+    .header-big #bulletin_box .carousel-item.active a.overflowClip_1,
+    .header-big #bulletin_box .carousel-item a.overflowClip_1,
+    .header-big #bulletin_box a.overflowClip_1 {
+        background: transparent !important;
+        background-color: transparent !important;
+        background-image: none !important;
+        box-shadow: none !important;
+    }
+    </style>
+    <style>
+        .sidebar-menu-inner ul ul {
+            min-width: 130px !important;
+        }
+        .navbar-collapse ul li ul {
+            min-width: 120px !important;
+        }
+    </style>
+    <style>
+    .io-grey-mode .tooltip-inner,
+    .io-grey-mode .tooltip .tooltip-inner,
+    .io-grey-mode .tooltip.show .tooltip-inner {
+      background-color: #fff !important;
+      color: #222 !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border: 1px solid #eee;
+    }
+    .io-grey-mode .tooltip.bs-tooltip-top .arrow::before,
+    .io-grey-mode .tooltip.bs-tooltip-auto[x-placement^="top"] .arrow::before {
+      border-top-color: #fff !important;
+    }
+
+    .io-black-mode .tooltip-inner,
+    .io-black-mode .tooltip .tooltip-inner,
+    .io-black-mode .tooltip.show .tooltip-inner {
+      background-color: #222 !important;
+      color: #fff !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.16);
+      border: 1px solid #444;
+    }
+    .io-black-mode .tooltip.bs-tooltip-top .arrow::before,
+    .io-black-mode .tooltip.bs-tooltip-auto[x-placement^="top"] .arrow::before {
+      border-top-color: #222 !important;
+    }
+    </style>
 </head>
 <body class=io-grey-mode>
 <div id=loading>
@@ -262,7 +314,7 @@
                                 <div class=carousel-inner role=listbox>
                                     <div class="carousel-item active"><a class=overflowClip_1 href=https://github.com/feijiqun/feijiqun.github.io target=_blank>本网站源代码已经在GitHub上开源！Star支持一下吧！</a></div>
                                     <div class=carousel-item><a class=overflowClip_1 href=https://feijiqun.github.io/tgwiki target=_blank>TGwiki：由feijiqun打造的高质量Telegram知识库，帮助用户更科学地使用Telegram。</a></div>
-                                    <div class=carousel-item><a class=overflowClip_1 href="/link/?url=sms-activate.io/?ref=3073106" target=_blank>接码平台推荐：超多国家号码可供选择，支持注册TG、Google、X、Ins、ChatGPT等。</a></div>
+                                    <div class=carousel-item><a class=overflowClip_1 href="/link/?url=sms-activate.io/?ref=12782462" target=_blank>接码平台推荐：超多国家号码可供选择，支持注册TG、Google、X、Ins、ChatGPT等。</a></div>
                                 </div>
                             </div>
                         </div>
@@ -1781,7 +1833,7 @@
                     <a href=https://fh-xy.net/ title=免费下载ACG资源，各种游戏动漫漫画 target=_blank rel=nofollow>风花雪月</a>
                     <a href=https://ygpy.net/ title=收录试用机场、常用软件以及热门网站 target=_blank rel=nofollow>一个朋友</a>
                     <a href=https://kungal.com/ title=现阶段最先进的Galgame资源发布网站 target=_blank rel=nofollow>鲲Galgame论坛</a>
-                    <a href=https://t.me/feijiqun0bot title=添加本站为友情链接 target=_blank rel=nofollow>添加友链</a></div>
+                    <a href=https://t.me/telequn0bot title=添加本站为友情链接 target=_blank rel=nofollow>添加友链</a></div>
             </div>
         </div>
         <footer class="main-footer footer-type-1 text-xs">

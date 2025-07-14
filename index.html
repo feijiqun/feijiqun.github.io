@@ -13,8 +13,8 @@
     <meta name=keywords
           content="Telegram频道,Telegram导航,FeiJiQun,Telegram频道推荐,Telegram索引,TG频道,TG导航,TG频道推荐,TG索引,电报频道,电报导航,电报频道推荐,电报索引,feijiqun.github.io">
     <meta name=image content="https://feijiqun.github.io/assets/images/favicon.png">
-    <meta name="google-site-verification" content="DMAKNIFCJBBi7jqI-RRUUWgnQ-iEIuIaoCokKcxcfVs" />
-    <meta name="msvalidate.01" content="3825955D3AA4A90115C42EE7EA7C3CFE" />
+    <meta name="google-site-verification" content="DMAKNIFCJBBi7jqI-RRUUWgnQ-iEIuIaoCokKcxcfVs"/>
+    <meta name="msvalidate.01" content="3825955D3AA4A90115C42EE7EA7C3CFE"/>
     <meta name=yandex-verification content="66b1ca86347489b2">
     <link rel=manifest href=/manifest.json>
     <title>频道 | 飞机群 - Telegram频道群组导航</title>
@@ -37,8 +37,7 @@
     <script src=https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js></script>
     <script type=text/javascript src=https://feijiqun.github.io/assets/js/content-search.js
             id=content-search-js></script>
-    <script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script>
-    <script src=../sw.js></script>
+
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7353728415772033"
             crossorigin=anonymous></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RHVG82T5BT"></script>
@@ -50,13 +49,13 @@
 
     gtag("js", new Date), gtag("config", "G-RHVG82T5BT")</script>
     <script>
-    // 背景切换功能
-    let currentBackground = 1;
-    const totalBackgrounds = 6;
-    
-    // 添加内联样式来强制覆盖
-    const style = document.createElement('style');
-    style.textContent = `
+        // 背景切换功能
+        let currentBackground = 1;
+        const totalBackgrounds = 6;
+
+        // 添加内联样式来强制覆盖
+        const style = document.createElement('style');
+        style.textContent = `
         body.background-option-1.io-grey-mode .main-content.grid-bg,
         body.background-option-1.io-grey-mode .page-container .main-content.grid-bg {
             background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 50%, #90caf9 100%) !important;
@@ -94,64 +93,64 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
         }
     `;
-    document.head.appendChild(style);
-    
-    function switchBackground() {
-        const body = document.body;
-        
-        // 移除当前背景类
-        body.classList.remove(`background-option-${currentBackground}`);
-        
-        // 切换到下一个背景
-        currentBackground = currentBackground % totalBackgrounds + 1;
-        
-        // 添加新背景类
-        body.classList.add(`background-option-${currentBackground}`);
-        
-        // 更新按钮提示
-        const backgroundSwitch = document.getElementById('background-switch');
-        const backgroundNames = [
-            '简洁渐变',
-            '点状图案', 
-            '波浪纹理',
-            '几何图案',
-            '纯色背景',
-            '云朵纹理'
-        ];
-        backgroundSwitch.setAttribute('title', `当前: ${backgroundNames[currentBackground-1]}`);
-        
-        // 保存用户偏好
-        localStorage.setItem('preferred-background', currentBackground);
-        
-        // 添加切换动画
-        body.style.transition = 'background 0.5s ease';
-        setTimeout(() => {
-            body.style.transition = '';
-        }, 500);
-    }
-    
-    // 页面加载时恢复用户偏好
-    document.addEventListener('DOMContentLoaded', function() {
-        const savedBackground = localStorage.getItem('preferred-background');
-        if (savedBackground) {
+        document.head.appendChild(style);
+
+        function switchBackground() {
             const body = document.body;
-            body.classList.remove('background-option-1');
-            body.classList.add(`background-option-${savedBackground}`);
-            currentBackground = parseInt(savedBackground);
-            
+
+            // 移除当前背景类
+            body.classList.remove(`background-option-${currentBackground}`);
+
+            // 切换到下一个背景
+            currentBackground = currentBackground % totalBackgrounds + 1;
+
+            // 添加新背景类
+            body.classList.add(`background-option-${currentBackground}`);
+
             // 更新按钮提示
             const backgroundSwitch = document.getElementById('background-switch');
             const backgroundNames = [
                 '简洁渐变',
-                '点状图案', 
+                '点状图案',
                 '波浪纹理',
                 '几何图案',
                 '纯色背景',
                 '云朵纹理'
             ];
-            backgroundSwitch.setAttribute('title', `当前: ${backgroundNames[currentBackground-1]}`);
+            backgroundSwitch.setAttribute('title', `当前: ${backgroundNames[currentBackground - 1]}`);
+
+            // 保存用户偏好
+            localStorage.setItem('preferred-background', currentBackground);
+
+            // 添加切换动画
+            body.style.transition = 'background 0.5s ease';
+            setTimeout(() => {
+                body.style.transition = '';
+            }, 500);
         }
-    });
+
+        // 页面加载时恢复用户偏好
+        document.addEventListener('DOMContentLoaded', function () {
+            const savedBackground = localStorage.getItem('preferred-background');
+            if (savedBackground) {
+                const body = document.body;
+                body.classList.remove('background-option-1');
+                body.classList.add(`background-option-${savedBackground}`);
+                currentBackground = parseInt(savedBackground);
+
+                // 更新按钮提示
+                const backgroundSwitch = document.getElementById('background-switch');
+                const backgroundNames = [
+                    '简洁渐变',
+                    '点状图案',
+                    '波浪纹理',
+                    '几何图案',
+                    '纯色背景',
+                    '云朵纹理'
+                ];
+                backgroundSwitch.setAttribute('title', `当前: ${backgroundNames[currentBackground - 1]}`);
+            }
+        });
     </script>
     <script type=text/javascript>(function (e, t, n, s, o, i, a) {
         e[n] = e[n] || function () {
@@ -199,22 +198,170 @@
         console.log("Registered events at scope: ", e.scope)
     })</script>
     <style>
-    /* 白天模式：黑字 */
-    body.io-grey-mode .header-big .word .wordname {
-        color: #222 !important;
-        -webkit-text-stroke: 0 !important;
-        text-shadow: none !important;
-        font-weight: bold !important;
-        background: none !important;
+        /* 白天模式：黑字 */
+        body.io-grey-mode .header-big .word .wordname {
+            color: #222 !important;
+            -webkit-text-stroke: 0 !important;
+            text-shadow: none !important;
+            font-weight: bold !important;
+            background: none !important;
+        }
+
+        /* 夜间模式：白字 */
+        body.io-black-mode .header-big .word .wordname {
+            color: #fff !important;
+            -webkit-text-stroke: 0 !important;
+            text-shadow: none !important;
+            font-weight: bold !important;
+            background: none !important;
+        }
+    </style>
+    <style>
+    /* 公告栏背景透明，提升可读性 */
+    #bulletin_box, 
+    #bulletin_box * {
+        background: transparent !important;
+        background-color: transparent !important;
+        background-image: none !important;
+        box-shadow: none !important;
+    }
+    #bulletin_box *::before,
+    #bulletin_box *::after {
+        background: transparent !important;
+        background-color: transparent !important;
+        background-image: none !important;
+        box-shadow: none !important;
+    }
+    #bulletin_box {
+        border: 1px solid #fff !important;
+        border-radius: 8px !important;
+    }
+    #bulletin_box a,
+    #bulletin_box .overflowClip_1,
+    #bulletin_box .carousel-item,
+    #bulletin_box .carousel-item.active,
+    #bulletin_box .carousel-item.active a {
+        background: transparent !important;
+        background-color: transparent !important;
+        background-image: none !important;
+        box-shadow: none !important;
+    }
+    #bulletin_box a.overflowClip_1,
+    #bulletin_box .carousel-item.active a.overflowClip_1 {
+        background: transparent !important;
+        background-color: transparent !important;
+        background-image: none !important;
+        box-shadow: none !important;
+    }
+    </style>
+    <style>
+        /* 终极覆盖 bulletin_box 里 a.overflowClip_1 的背景色 */
+        .header-big #bulletin_box .carousel-item.active a.overflowClip_1,
+        .header-big #bulletin_box .carousel-item a.overflowClip_1,
+        .header-big #bulletin_box a.overflowClip_1 {
+            background: transparent !important;
+            background-color: transparent !important;
+            background-image: none !important;
+            box-shadow: none !important;
+        }
+    </style>
+    <style>
+        .sidebar-menu-inner ul ul {
+            min-width: 130px !important;
+        }
+        .navbar-collapse ul li ul {
+            min-width: 120px !important;
+        }
+    </style>
+    <style>
+        .sub-menu {
+            min-width: 120px !important;
+        }
+    </style>
+    <style>
+        .tooltip-inner {
+          background-color: #fff !important;
+          color: #222 !important;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+          border: 1px solid #eee;
+        }
+        .tooltip.bs-tooltip-top .arrow::before,
+        .tooltip.bs-tooltip-auto[x-placement^="top"] .arrow::before {
+          border-top-color: #fff !important;
+        }
+    </style>
+    <style>
+        .io-grey-mode .tooltip-inner,
+        .io-grey-mode .tooltip .tooltip-inner,
+        .io-grey-mode .tooltip.show .tooltip-inner {
+          background-color: #fff !important;
+          color: #222 !important;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+          border: 1px solid #eee;
+        }
+        .io-grey-mode .tooltip.bs-tooltip-top .arrow::before,
+        .io-grey-mode .tooltip.bs-tooltip-auto[x-placement^="top"] .arrow::before {
+          border-top-color: #fff !important;
+        }
+
+        .io-black-mode .tooltip-inner,
+        .io-black-mode .tooltip .tooltip-inner,
+        .io-black-mode .tooltip.show .tooltip-inner {
+          background-color: #222 !important;
+          color: #fff !important;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.16);
+          border: 1px solid #444;
+        }
+        .io-black-mode .tooltip.bs-tooltip-top .arrow::before,
+        .io-black-mode .tooltip.bs-tooltip-auto[x-placement^="top"] .arrow::before {
+          border-top-color: #222 !important;
+        }
+    </style>
+    <style>
+    /* 夜间模式下侧边栏和小圆按钮深色化 */
+    .io-black-mode .sidebar-nav,
+    .io-black-mode .sidebar-nav-inner,
+    .io-black-mode .sidebar-logo,
+    .io-black-mode .sidebar-menu-inner,
+    .io-black-mode .sidebar-item,
+    .io-black-mode .sidebar-menu,
+    .io-black-mode .sidebar-scroll,
+    .io-black-mode .sidebar-menu-inner ul,
+    .io-black-mode .sidebar-menu-inner ul ul,
+    .io-black-mode .sidebar-menu-inner ul li,
+    .io-black-mode .sidebar-menu-inner ul li a {
+        background: #23272f !important;
+        color: #eee !important;
+        border-color: #23272f !important;
     }
 
-    /* 夜间模式：白字 */
-    body.io-black-mode .header-big .word .wordname {
+    .io-black-mode .sidebar-logo .logo-light {
+        filter: brightness(0.8);
+    }
+
+    .io-black-mode .sidebar-menu-inner ul li a {
+        color: #eee !important;
+    }
+
+    .io-black-mode .sidebar-menu-inner ul li a:hover,
+    .io-black-mode .sidebar-menu-inner ul li.active > a {
+        background: #2c313a !important;
         color: #fff !important;
-        -webkit-text-stroke: 0 !important;
-        text-shadow: none !important;
-        font-weight: bold !important;
-        background: none !important;
+    }
+
+    .io-black-mode .btn.rounded-circle,
+    .io-black-mode .btn.rounded-circle.kefu,
+    .io-black-mode .btn.rounded-circle.switch-dark-mode,
+    .io-black-mode .btn.rounded-circle.switch-background {
+        background: #23272f !important;
+        color: #eee !important;
+        border: none !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+
+    .io-black-mode .btn.rounded-circle:hover {
+        background: #2c313a !important;
+        color: #fff !important;
     }
     </style>
 </head>
@@ -492,7 +639,7 @@
                                                                 target=_blank>TGwiki：由feijiqun打造的高质量Telegram知识库，帮助用户更科学地使用Telegram。</a>
                                     </div>
                                     <div class=carousel-item><a class=overflowClip_1
-                                                                href="/link/?url=sms-activate.io/?ref=3073106"
+                                                                href="/link/?url=sms-activate.io/?ref=12782462"
                                                                 target=_blank>接码平台推荐：超多国家号码可供选择，支持注册TG、Google、X、Ins、ChatGPT等。</a>
                                     </div>
                                 </div>
@@ -2740,8 +2887,8 @@
         src=https://cdn.jsdelivr.net/npm/theia-sticky-sidebar@1.7.0/dist/theia-sticky-sidebar.min.js></script>
 <script type=text/javascript
         src=https://cdn.jsdelivr.net/npm/jquery-ui-touch-punch@0.2.3/jquery.ui.touch-punch.min.js></script>
-    <script type=text/javascript src=https://feijiqun.github.io/assets/js/app-anim.js id=appanim-js></script>
-    <script type=text/javascript src=https://feijiqun.github.io/assets/js/modern-enhancements.js id=modern-enhancements-js></script>
+<script type=text/javascript src=https://feijiqun.github.io/assets/js/app-anim.js id=appanim-js></script>
+<script type=text/javascript src=https://feijiqun.github.io/assets/js/modern-enhancements.js id=modern-enhancements-js></script>
 <script type=text/javascript>$(document).ready(function () {
     var e = $("#loading");
     e.addClass("close"), setTimeout(function () {

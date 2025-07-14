@@ -207,23 +207,6 @@
     overflow: hidden;
 }
 
-.bulletin-big .card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: var(--primary-gradient);
-    transform: scaleY(0);
-    transform-origin: bottom;
-    transition: transform 0.3s ease;
-}
-
-.bulletin-big .card:hover::before {
-    transform: scaleY(1);
-}
-
 /* 热门词汇增强 */
 .header-big .word .wordsub {
     position: relative;
