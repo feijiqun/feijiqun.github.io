@@ -34,4 +34,4 @@
 
 ### 合作推广
 
-请通过 [@telequn0bot](https://t.me/telequn0bot) 联系我们协商具体事宜。
+请通过 [@NewLinkAuditBot](https://t.me/NewLinkAuditBot) 联系我们协商具体事宜。
