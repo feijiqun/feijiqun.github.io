@@ -1,37 +1,86 @@
-# 飞机群 - Telegram频道群组导航 
 
-飞机群 - Telegram频道群组导航。收录Telegram上的优质频道、群组、机器人，打造一个高质量Telegram导航。2025全网最佳Telegram导航网站，从超过20,000个频道、群组、机器人中精心筛选。Telegram导航，有FeiJiQun就够了！上FeiJiQun，发现更多优质Telegram频道、群组、机器人！
+# 电报群/飞机群 - 最全 Telegram 中文频道群组导航 | Telegram 群组、频道、机器人、工具索引
 
-飞机群 分为三个模块：频道导航、群组导航、机器人导航，分别对应Telegram Channel（频道）、Telegram Group（群组）、Telegram Robot（机器人）。
 
-**Star本仓库支持一下吧！**
+欢迎访问 **电报群/飞机群 - Telegram 中文导航**！这里是2025全网最佳 **Telegram 群组、频道、机器人、工具索引大全**，专为中文用户打造。  
+从 50,000+ 频道、群组、机器人中精选推荐，助你轻松找到需要的资源！
 
-[点击此处](https://t.me/share?url=https%3A%2F%2Ffeijiqun.github.io%2F&text=%E6%88%91%E5%8F%91%E7%8E%B0%E4%BA%86%E4%B8%AATelegram%E5%AF%BC%E8%88%AA%EF%BC%8C%E9%87%8C%E9%9D%A2%E6%94%B6%E5%BD%95%E4%BA%86%E8%B6%85%E5%A4%9A%E4%BC%98%E8%B4%A8%E9%A2%91%E9%81%93%E3%80%81%E7%BE%A4%E7%BB%84%E5%92%8C%E6%9C%BA%E5%99%A8%E4%BA%BA%EF%BC%8C%E5%BF%AB%E6%9D%A5%E7%9C%8B%E7%9C%8B%E5%90%A7%EF%BC%81) 将网站分享给你的TG好友/群组/频道
+👉 **推荐 Telegram 中文频道**: [TG 中文导航](https://feijiqun.github.io/)  
+👉 **频道导航**: [频道列表](https://feijiqun.github.io/) | [群组导航](https://feijiqun.github.io/group/) | [机器人导航](https://feijiqun.github.io/robot/)  
+👉 **Telegram 中文知识库**: [TGwiki](https://github.com/feijiqun/tgwiki/)
+## 🌟 **Star 本仓库支持一下吧！** [GitHub 地址](https://github.com/feijiqun/feijiqun.github.io)
 
-### 网站地址
+## 📢 热门 Telegram 群组、频道、机器人推荐
 
-[频道导航](https://feijiqun.github.io/) | [群组导航](https://feijiqun.github.io/group/) | [机器人导航](https://feijiqun.github.io/robot/)
+- 🔍 **[SOSO搜搜](https://t.me/soso?start=a_1023712789)** — 发送关键词来寻找群组、频道或视频。
+- 🔍 [极搜 中文搜索@JISO](https://t.me/jiso?start=a_1023712789) - 极搜JISO帮你找到有趣的群、频道、视频、音乐、电影、新闻。
+- 🔍 [Super](https://feijiqun.github.io/link/?url=t.me/Super?start=ref-1023712789) - 您感兴趣的 Super Discover 组、频道和机器人。
+- 🔍 [神马搜索 ](https://t.me/smss?start=spread_1023712789) - 神马搜索是TG的中文导航，发送词语即可搜索关联群组与频道资源
+- 🔍 [i快搜-强大的搜索引擎](https://t.me/ikuaisobot?start=1023712789) - 帮你找到有趣的群、频道、视频、音乐、电影、新闻
+- 🔍 [aiso中文搜索](https://feijiqun.github.io/link/?url=t.me/aiso?start=telegram_1023712789) - 查找群组、频道、影视、音乐或机器人。
+- 🔗 **[阿里云盘盘](https://t.me/yunpanpan)** — 云盘分享资源
+- 🎥 **[4K 影视](https://t.me/Aliyun_4K_Movies)** — 高质量影视内容
+- 💰 **[虚拟货币资讯](https://t.me/telonews_cn)** — 最新 DeFi、区块链新闻
+- 📚 **[电子书分享](https://t.me/Readfine)** — 海量图书免费下载
+- 📦 **[TG Wallet](https://t.me/wallet)** — Telegram 官方钱包，支持比特币、USDT、TON
 
-更多信息请查看： [关于网站](https://feijiqun.github.io/about/)
+---
 
-由飞机群打造的高质量Telegram知识库： [TGwiki](https://github.com/feijiqun/tgwiki/) | [传送门](https://feijiqun.github.io/tgwiki/)
+## ⚡️ Telegram 中文工具 / 机器人合集
 
-### 赞助我们
+- 🤖 **[Save_Restrict_bot](https://t.me/Save_Restrict_bot)** — 下载受限内容
+- 📥 **[douyin_download_bot](https://t.me/douyin_download_bot)** — 多平台视频解析工具
+- 🧰 **[telegram_media_downloader](https://github.com/tangyoha/telegram_media_downloader)** — 自建下载机器人源码
+- 💎 **[vip2tgbot](https://t.me/vip2tgbot)** — 电报会员自动开通机器人
+- 🌈 **[彩虹群发器](https://shop.tg10000.com/buy/1)** — 群发推广利器
 
-飞机群的维护需要一定的人力物力，在此过程中离不开大家的支持。
+---
 
-[点击此处](https://feijiqun.github.io/donate/) 赞助我们。您的赞助是我们前进的动力！
+## 🔒 Telegram 群组管理 / 验证机器人
 
-### 源码使用
+- ✅ **[policr_mini_bot](https://t.me/policr_mini_bot)** — 加群验证
+- 🚫 **[NoAdsBot](https://t.me/autodeletead_bot)** — 广告拦截
+- 👋 **[RealApolloBot](https://t.me/RealApolloBot)** — 欢迎机器人
+- 🎯 **[Rose](https://t.me/MissRose_bot)** — 功能强大的群组管理助手
+
+---
+
+## 💡 Telegram 使用技巧
+
+- 📱 **iOS 客户端敏感内容解锁**:
+    - 通过 Telegram Desktop / 网页版 [web.telegram.org](https://web.telegram.org/) 设置 `Show Sensitive Content` 解除限制。
+
+- 🌏 **中文语言包安装**: [@Tele_zh_CN](https://t.me/Tele_zh_CN)
+
+- 📞 **+86 号码无法接收验证码解决**:
+    - **开通国际漫游**
+    - **使用 Giffgaff 手机卡**
+    - **借助 SMS 接码平台**: [sms-activate.guru](https://sms-activate.io/?ref=12782462)
+
+---
+
+## 🔑 交易所推荐注册链接（专属邀请码减免手续费）
+
+- [Binance 币安](https://accounts.binance.com/zh-CN/register?ref=58799838) — 减免 50% 手续费
+- [OKX 欧易](https://www.okx.com) — 减免 50% 手续费
+- [Gate](https://www.gate.io/ref/370610) — 减免 50% 手续费
+
+---
+
+## 🔗 关键词覆盖
+`Telegram 中文导航`, `Telegram 群组`, `Telegram 频道`, `Telegram 机器人`, `Telegram 工具`, `中文群组导航`, `群组管理`, `机器人大全`, `TG 中文频道`, `虚拟货币投资`, `下载受限内容`, `频道索引`, `中文索引`, `加群验证`, `广告拦截`, `iOS 解除 Telegram 限制`, `Telegram 钱包`
+
+---
+
+##  👨🏻‍💻 源码使用
 
 本网站已开源，您可以下载源代码或直接fork本仓库创建副本。
 
 **使用/修改网站源代码请遵守 [GPL-3.0开源协议](https://github.com/feijiqun/feijiqun.github.io/blob/main/LICENSE) ，感谢您的配合！**
 
-### 免责声明
+## 📝  免责声明
 
 本网站面向国际服务，可能包含部分敏感内容。**请自觉遵守当地有关法律法规**，所产生的一切后果，本网站概不负责！网站内容收集自互联网，如有内容侵犯了你的权益，请联系删除相关内容。
 
-### 合作推广
-
-请通过 [@feijiqun0bot](https://t.me/feijiqun0bot) 联系我们协商具体事宜。
+---
+## 📨 合作请联系 [@NewLinkAuditBot](https://t.me/NewLinkAuditBot)
