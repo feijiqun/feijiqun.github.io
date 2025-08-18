@@ -1,0 +1,57 @@
+name: Force Sync from Upstream
+
+on:
+  schedule:
+    # GitHub 用 UTC；这里是 UTC 06:50 ≈ 美西 23:50（夏令时）
+    - cron: "50 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: force-sync
+  cancel-in-progress: false
+
+env:
+  DEFAULT_BRANCH: main
+  UPSTREAM_URL: https://github.com/feijiqun/feijiqun.github.io.git
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your fork
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ env.DEFAULT_BRANCH }}
+
+      - name: Set git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Add or update upstream remote
+        run: |
+          if git remote | grep -q "^upstream$"; then
+            git remote set-url upstream "$UPSTREAM_URL"
+          else
+            git remote add upstream "$UPSTREAM_URL"
+          fi
+          git fetch upstream --tags
+
+      - name: Merge from upstream/${{ env.DEFAULT_BRANCH }} (allow diverged history)
+        run: |
+          git checkout "${DEFAULT_BRANCH}"
+          # 普通合并，避免删除你仓库里的文件（包括工作流）
+          git merge --no-ff --no-edit "upstream/${DEFAULT_BRANCH}" || {
+            echo "Merge conflict detected. Please resolve conflicts manually."; exit 1;
+          }
+
+      - name: Push to your fork
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git push origin "${DEFAULT_BRANCH}"
+          git push origin --tags
