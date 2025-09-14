@@ -9,7 +9,7 @@
 
 ## 🌟 **Star 本仓库支持一下吧！** [GitHub 地址](https://github.com/feijiqun/feijiqun.github.io)
 
-## 📢 热门 Telegram 群组、频道、机器人推荐
+## 📢 热门 飞机群、电报群、Telegram 群组、频道、机器人推荐
 
 - 🔍 **[SOSO搜搜](https://t.me/soso?start=a_1023712789)** — 发送关键词来寻找群组、频道或视频。
 - 🔍 [极搜 中文搜索@JISO](https://t.me/jiso?start=a_1023712789) - 极搜JISO帮你找到有趣的群、频道、视频、音乐、电影、新闻。
