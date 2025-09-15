@@ -1,13 +1,9 @@
 image: ruby:3.2
-
 variables:
   JEKYLL_ENV: production
   BUNDLE_PATH: vendor/bundle
-
 cache:
-  paths:
-    - vendor/bundle
-
+  paths: [vendor/bundle]
 stages: [build]
 
 pages:
