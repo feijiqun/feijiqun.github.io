@@ -1,0 +1,11 @@
+image: ruby:3.2
+stages: [build]
+pages:
+  stage: build
+  before_script:
+    - gem install jekyll webrick
+  script:
+    - jekyll build -d public
+  artifacts:
+    paths: [public]
+  only: [main]
