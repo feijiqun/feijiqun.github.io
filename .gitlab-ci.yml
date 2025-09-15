@@ -1,3 +1,4 @@
+# .gitlab-ci.yml
 image: ruby:3.2
 
 variables:
@@ -17,9 +18,9 @@ pages:
     - gem install bundler
     - bundle install --jobs 4 --retry 3
   script:
-    - bundle exec jekyll build -d public
+    - bundle exec jekyll build -d public   # 生成到 public/
   artifacts:
     paths:
       - public
   only:
-    - main
+    - main   # 只在默认分支构建发布
