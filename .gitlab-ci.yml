@@ -1,20 +1,26 @@
-image: ruby:3.2
-variables:
-  JEKYLL_ENV: production
-  BUNDLE_PATH: vendor/bundle
-cache:
-  paths: [vendor/bundle]
-stages: [build]
+title: "Dianbao Site"
+description: "My GitLab Pages powered by Jekyll"
+url: "https://dianbao.gitlab.io"   # 网站的根域名
+baseurl: ""                        # 根目录，不要写 /
 
-pages:
-  stage: build
-  before_script:
-    - gem install bundler:2.5.15
-    - bundle config set force_ruby_platform true
-    - bundle config set path "$BUNDLE_PATH"
-    - bundle install --jobs 4 --retry 3
-  script:
-    - bundle exec jekyll build -d public
-  artifacts:
-    paths: [public]
-  only: [main]
+# 基本配置
+theme: minima                      # 默认主题（你也可以换成别的）
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+ 
+# 编码和语言
+encoding: "utf-8"
+lang: "zh-CN"
+
+# 插件（常用）
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# 目录设置
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
