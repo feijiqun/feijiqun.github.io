@@ -1,26 +1,11 @@
-# .gitlab-ci.yml
 image: ruby:3.2
-
-variables:
-  JEKYLL_ENV: production
-  BUNDLE_PATH: vendor/bundle
-
-cache:
-  paths:
-    - vendor/bundle
-
-stages:
-  - build
-
+stages: [build]
 pages:
   stage: build
   before_script:
-    - gem install bundler
-    - bundle install --jobs 4 --retry 3
+    - gem install jekyll webrick
   script:
-    - bundle exec jekyll build -d public   # 生成到 public/
+    - jekyll build -d public
   artifacts:
-    paths:
-      - public
-  only:
-    - main   # 只在默认分支构建发布
+    paths: [public]
+  only: [main]
