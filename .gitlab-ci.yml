@@ -1,11 +1,24 @@
 image: ruby:3.2
+
+variables:
+  JEKYLL_ENV: production
+  BUNDLE_PATH: vendor/bundle
+
+cache:
+  paths:
+    - vendor/bundle
+
 stages: [build]
+
 pages:
   stage: build
   before_script:
-    - gem install jekyll webrick
+    - gem install bundler:2.5.15
+    - bundle config set force_ruby_platform true
+    - bundle config set path "$BUNDLE_PATH"
+    - bundle install --jobs 4 --retry 3
   script:
-    - jekyll build -d public
+    - bundle exec jekyll build -d public
   artifacts:
     paths: [public]
   only: [main]
