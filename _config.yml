@@ -8,7 +8,7 @@ theme: minima                      # 默认主题（你也可以换成别的）
 markdown: kramdown
 highlighter: rouge
 permalink: pretty
-
+ 
 # 编码和语言
 encoding: "utf-8"
 lang: "zh-CN"
