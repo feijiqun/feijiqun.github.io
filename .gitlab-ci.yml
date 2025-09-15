@@ -1,16 +1,25 @@
-# The Docker image that will be used to build your app
-image: feiiqun
-create-pages:
-  pages:
-    # The folder that contains the files to be exposed at the Page URL
-    publish: public
-  rules:
-    # This ensures that only pushes to the default branch will trigger
-    # a pages deploy
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
-  # Functions that should be executed before the build script is run
+image: ruby:3.2
+
+variables:
+  JEKYLL_ENV: production
+  BUNDLE_PATH: vendor/bundle
+
+cache:
+  paths:
+    - vendor/bundle
+
+stages:
+  - build
+
+pages:
+  stage: build
   before_script:
     - gem install bundler
-    - bundle install
+    - bundle install --jobs 4 --retry 3
   script:
     - bundle exec jekyll build -d public
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
