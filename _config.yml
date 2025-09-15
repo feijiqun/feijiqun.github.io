@@ -1,6 +1,6 @@
 title: "Feiiqun Site"
 description: "My GitLab Pages powered by Jekyll"
-url: "https://feiiqun.gitlab.io"   # 网站的根域名
+url: "https://feijiqun.gitlab.io"   # 网站的根域名
 baseurl: ""                        # 根目录，不要写 /
 
 # 基本配置
