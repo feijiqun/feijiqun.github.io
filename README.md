@@ -11,8 +11,8 @@
 
 ## 📢 热门 飞机群、电报群、Telegram 群组、频道、机器人推荐
 
-- 🔍 **[SOSO搜搜](https://t.me/soso?start=a_1023712789)** — 发送关键词来寻找群组、频道或视频。
-- 🔍 [极搜 中文搜索@JISO](https://t.me/jiso?start=a_1023712789) - 极搜JISO帮你找到有趣的群、频道、视频、音乐、电影、新闻。
+- 🔍 **[SOSO搜搜](https://t.me/Super?start=ref-1023712789)** — 发送关键词来寻找群组、频道或视频。
+- 🔍 [极搜 中文搜索@JISO](https://t.me/Super?start=ref-1023712789) - 极搜JISO帮你找到有趣的群、频道、视频、音乐、电影、新闻。
 - 🔍 [Super](https://feijiqun.github.io/link/?url=t.me/Super?start=ref-1023712789) - 您感兴趣的 Super Discover 组、频道和机器人。
 - 🔍 [神马搜索 ](https://t.me/smss?start=spread_1023712789) - 神马搜索是TG的中文导航，发送词语即可搜索关联群组与频道资源
 - 🔍 [i快搜-强大的搜索引擎](https://t.me/ikuaisobot?start=1023712789) - 帮你找到有趣的群、频道、视频、音乐、电影、新闻
