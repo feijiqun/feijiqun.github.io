@@ -26,6 +26,7 @@
     <link rel=stylesheet href=https://use.fontawesome.com/releases/v6.7.2/css/all.css>
     <script src=https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js></script>
     <script type=text/javascript src=/assets/js/content-search.js id=content-search-js></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <script src=../sw.js></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7431027634092046" crossorigin=anonymous></script>
@@ -166,7 +167,7 @@
             <div class="border-top py-2 border-color">
                 <div class=flex-bottom>
                     <ul>
-                        <li id=menu-item-237 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-237 sidebar-item"><a href=https://feijiqun.github.io/enroll/ target=_blank><i
+                        <li id=menu-item-237 class="menu-item menu-item-type-post_type menu-item-object-page menu-item-237 sidebar-item"><a href=/enroll/><i
                                 class="fas fa-file-upload icon-fw icon-lg mr-2"></i><span>提交收录</span></a></li>
                         <li id=menu-item-212 class="menu-item menu-item-type-custom menu-item-object-custom menu-item-212 sidebar-item"><a href=/privacy-policy/><i class="fas fa-user-shield icon-fw icon-lg mr-2"></i><span>隐私政策</span></a></li>
                         <li id=menu-item-213 class="menu-item menu-item-type-custom menu-item-object-custom menu-item-213 sidebar-item"><a href=https://feijiqun.github.io/about/><i class="fa fa-info-circle icon-fw icon-lg mr-2"></i><span>关于网站</span></a>
@@ -229,8 +230,53 @@
         <main role=main class=flex-shrink-0 style=margin-left:20px;margin-right:20px;overflow:hidden>
             <div class=container><h1 class=mt-5>提交收录说明</h1>
                 <div class=content><p>本网站已经开放提交收录，您可以将您的频道/群组提交收录到feijiqun，并获得更多订阅者。</p>
-                    <p>TGQRY - 由feijiqun打造的Telegram索引机器人，帮助用户方便快捷的查询高质量频道群组，做一个纯净的索引机器人。您可以通过机器人
-                        <a href="/go/?username=TGQRYbot">@TGQRYbot</a> 进行提交收录（原机器人 @feijiqunindexbot 已暂停维护）。</p>
+                    <p>telequn_bot - 由feijiqun打造的Telegram索引机器人，帮助用户方便快捷的查询高质量频道群组，做一个纯净的索引机器人。您可以通过下方表单提交收录，信息会同步提交到审核表格；也可以继续通过机器人
+                        <a href="/go/?username=telequn_bot">@telequn_bot</a> 进行提交收录（原机器人 @feijiqunindexbot 已暂停维护）。</p>
+                    <form id=enroll-submit-form class=enroll-form>
+                        <input type=text name=website_url class=enroll-hp tabindex=-1 autocomplete=off aria-hidden=true>
+                        <div class=enroll-form-grid>
+                            <div class=enroll-field>
+                                <label for=enroll-type>类型</label>
+                                <select id=enroll-type name=type required>
+                                    <option value=频道>频道</option>
+                                    <option value=群组>群组</option>
+                                    <option value=机器人>机器人</option>
+                                    <option value=其他>其他</option>
+                                </select>
+                            </div>
+                            <div class=enroll-field>
+                                <label for=enroll-url>Telegram 链接</label>
+                                <input id=enroll-url name=telegram_url type=url inputmode=url placeholder=https://t.me/telequn_bot required>
+                            </div>
+                            <div class=enroll-field>
+                                <label for=enroll-title>名称</label>
+                                <input id=enroll-title name=title type=text maxlength=80 placeholder=频道、群组或机器人名称 required>
+                            </div>
+                            <div class=enroll-field>
+                                <label for=enroll-category>分类</label>
+                                <input id=enroll-category name=category type=text maxlength=40 placeholder=例如：科技、资源、聊天>
+                            </div>
+                            <div class=enroll-field>
+                                <label for=enroll-tags>标签</label>
+                                <input id=enroll-tags name=tags type=text maxlength=120 placeholder=多个标签用逗号分隔>
+                            </div>
+                            <div class=enroll-field>
+                                <label for=enroll-contact>联系方式</label>
+                                <input id=enroll-contact name=contact type=text maxlength=80 placeholder=@username 或邮箱，便于审核沟通>
+                            </div>
+                            <div class="enroll-field enroll-field-wide">
+                                <label for=enroll-description>简介</label>
+                                <textarea id=enroll-description name=description rows=4 maxlength=500 placeholder=请简单介绍内容方向、受众和更新频率 required></textarea>
+                            </div>
+                            <div class="enroll-field enroll-field-wide">
+                                <label>人机验证</label>
+                                <div id=turnstile-widget class=turnstile-widget></div>
+                                <p id=turnstile-help class=turnstile-help>正在加载验证...</p>
+                            </div>
+                        </div>
+                        <button type=submit class="btn btn-primary enroll-submit"><i class="fas fa-paper-plane mr-2"></i>提交到审核表格</button>
+                        <span id=enroll-submit-message class=enroll-submit-message role=status aria-live=polite></span>
+                    </form>
                     <h3 id=提交要求>提交要求</h3>
                     <ol>
                         <li>仅收录公开频道/群组；</li>
@@ -243,10 +289,10 @@
                     <h3 id=提交步骤>提交步骤</h3>
                     <ol>
                         <li>私聊
-                            <a href="/go/?username=TGQRY">@TGQRYbot</a> ；
+                            <a href="/go/?username=telequn_bot">@telequn_bot</a> ；
                         </li>
                         <li>点击输入框下方按钮“提交”；</li>
-                        <li>发送频道/群组链接，格式： <code>https://t.me/TGQRY</code> ；</li>
+                        <li>发送频道/群组链接，格式： <code>https://t.me/telequn_bot</code> ；</li>
                         <li>点击“修改分类”，选择一个分类；</li>
                         <li>点击“修改标签”，添加标签（可选，标签可以优化搜索结果，建议设置）；</li>
                         <li>修改频道/群组简介（可选，机器人会自动获取简介）；</li>
@@ -263,7 +309,98 @@
                     <p>若审核未通过，请仔细核查您的频道是否符合要求，并在改正后重新尝试提交，是金子总会发光！</p></div>
             </div>
         </main>
-        <style>.content {
+        <style>.enroll-form {
+            margin: 18px 0 24px;
+            padding: 18px;
+            border: 1px solid rgba(0, 0, 0, .08);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, .72)
+        }
+
+        .enroll-form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px
+        }
+
+        .enroll-field {
+            display: flex;
+            flex-direction: column
+        }
+
+        .enroll-field-wide {
+            grid-column: 1 / -1
+        }
+
+        .enroll-field label {
+            margin-bottom: 6px;
+            font-weight: 600
+        }
+
+        .enroll-field input, .enroll-field select, .enroll-field textarea {
+            width: 100%;
+            border: 1px solid rgba(0, 0, 0, .14);
+            border-radius: 6px;
+            padding: 10px 12px;
+            color: #333;
+            background: #fff
+        }
+
+        .enroll-field textarea {
+            resize: vertical
+        }
+
+        .enroll-submit {
+            margin-top: 14px
+        }
+
+        .turnstile-widget {
+            min-height: 65px
+        }
+
+        .turnstile-help {
+            margin: 6px 0 0;
+            color: #777;
+            font-size: .875rem
+        }
+
+        .enroll-submit-message {
+            display: inline-block;
+            margin-left: 12px;
+            color: #666
+        }
+
+        .enroll-submit-message.is-success {
+            color: #168a45
+        }
+
+        .enroll-submit-message.is-error {
+            color: #d93025
+        }
+
+        .enroll-hp {
+            position: absolute;
+            left: -9999px;
+            opacity: 0
+        }
+
+        body.night .enroll-form {
+            border-color: rgba(255, 255, 255, .12);
+            background: rgba(255, 255, 255, .05)
+        }
+
+        @media (max-width: 767px) {
+            .enroll-form-grid {
+                grid-template-columns: 1fr
+            }
+
+            .enroll-submit-message {
+                display: block;
+                margin: 10px 0 0
+            }
+        }
+
+        .content {
             font-size: 1rem;
             line-height: 24px
         }
@@ -347,5 +484,96 @@ function switchNightMode() {
     var e = document.cookie.replace(/(?:(?:^|.*;\s*)night\s*=\s*([^;]*).*$)|^.*$/, "$1") || "0";
     e == "0" ? ($("#search-bg").css("background-image", "url(/assets/images/background.jpg)"), document.body.classList.remove("io-grey-mode"), document.body.classList.add("io-black-mode"), document.cookie = "night=1;path=/", console.log(" "), $(".switch-dark-mode").attr("data-original-title", "日间模式"), $(".mode-ico").removeClass("fa-moon"), $(".mode-ico").addClass("fa-sun")) : ($("#search-bg").css("background-image", "url(/assets/images/background.jpg)"), document.body.classList.remove("io-black-mode"), document.body.classList.add("io-grey-mode"), document.cookie = "night=0;path=/", console.log(" "), $(".switch-dark-mode").attr("data-original-title", "夜间模式"), $(".mode-ico").removeClass("fa-sun"), $(".mode-ico").addClass("fa-moon"))
 }</script>
+<script>(function () {
+    var GOOGLE_SHEETS_ENDPOINT = "";
+    var TURNSTILE_SITE_KEY = "0x4AAAAAAEr09it_DSwvJwTg";
+    var form = document.getElementById("enroll-submit-form");
+    var message = document.getElementById("enroll-submit-message");
+    var turnstileHelp = document.getElementById("turnstile-help");
+    var turnstileToken = "";
+    if (!form || !message) return;
+
+    function setMessage(text, className) {
+        message.className = "enroll-submit-message " + (className || "");
+        message.textContent = text;
+    }
+
+    function setTurnstileHelp(text) {
+        if (turnstileHelp) turnstileHelp.textContent = text;
+    }
+
+    function renderTurnstile() {
+        if (!TURNSTILE_SITE_KEY) {
+            setTurnstileHelp("人机验证尚未配置，请先填写 Cloudflare Turnstile site key。");
+            return;
+        }
+        if (!window.turnstile || !document.getElementById("turnstile-widget")) {
+            window.setTimeout(renderTurnstile, 200);
+            return;
+        }
+        window.turnstile.render("#turnstile-widget", {
+            sitekey: TURNSTILE_SITE_KEY,
+            callback: function (token) {
+                turnstileToken = token;
+                setTurnstileHelp("验证通过。");
+            },
+            "expired-callback": function () {
+                turnstileToken = "";
+                setTurnstileHelp("验证已过期，请重新验证。");
+            },
+            "error-callback": function () {
+                turnstileToken = "";
+                setTurnstileHelp("验证加载失败，请刷新页面后再试。");
+            }
+        });
+    }
+
+    renderTurnstile();
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        if (!GOOGLE_SHEETS_ENDPOINT) {
+            setMessage("提交入口尚未配置，请先部署 Google Apps Script。", "is-error");
+            return;
+        }
+        if (!TURNSTILE_SITE_KEY) {
+            setMessage("人机验证尚未配置，请先填写 Cloudflare Turnstile site key。", "is-error");
+            return;
+        }
+        if (!turnstileToken) {
+            setMessage("请先完成人机验证。", "is-error");
+            return;
+        }
+        var telegramUrl = form.telegram_url.value.trim();
+        if (!/^https:\/\/t\.me\/[A-Za-z0-9_+/?=&.-]+$/.test(telegramUrl)) {
+            setMessage("请输入有效的 Telegram 链接，例如 https://t.me/telequn_bot。", "is-error");
+            form.telegram_url.focus();
+            return;
+        }
+        var submitButton = form.querySelector("button[type=submit]");
+        var payload = new URLSearchParams(new FormData(form));
+        payload.set("source_url", window.location.href);
+        payload.set("submitted_at", new Date().toISOString());
+        payload.set("user_agent", navigator.userAgent);
+        payload.set("cf-turnstile-response", turnstileToken);
+        submitButton.disabled = true;
+        setMessage("正在提交...", "");
+        fetch(GOOGLE_SHEETS_ENDPOINT, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"},
+            body: payload.toString()
+        }).then(function () {
+            form.reset();
+            turnstileToken = "";
+            if (window.turnstile) window.turnstile.reset("#turnstile-widget");
+            setMessage("已提交，等待管理员审核。", "is-success");
+        }).catch(function () {
+            setMessage("提交失败，请稍后再试，或通过 @telequn_bot 提交。", "is-error");
+        }).finally(function () {
+            submitButton.disabled = false;
+        });
+    });
+})()</script>
 </body>
 </html>
