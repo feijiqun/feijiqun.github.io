@@ -1,0 +1,776 @@
+/* =====================================================================
+   全站主题（Aurora）——必须是页面里最后加载的样式表（</head> 之前）。
+   由 scripts/update_assets.py 注入到所有页面，并给自有 css/js 加 ?v=<内容哈希>。
+
+   旧样式里有很多 `body ... * { color: ... !important }` 的强制规则，
+   这里统一用 `html body ...` 前缀提高优先级来覆盖，不改页面结构。
+   ===================================================================== */
+
+/* --- 设计变量 --- */
+html body {
+    --brand: #3b6cff;
+    --brand-2: #8b5cf6;
+    --brand-3: #22d3ee;
+    --hot: #ff4d8d;
+    --grad: linear-gradient(120deg, #22d3ee 0%, #3b6cff 45%, #8b5cf6 100%);
+    --grad-soft: linear-gradient(120deg, rgba(34, 211, 238, .14), rgba(59, 108, 255, .14) 45%, rgba(139, 92, 246, .14));
+    --ink: #0b1020;
+    --ink-2: #131a30;
+    --ink-line: rgba(255, 255, 255, .08);
+    --ink-text: #c9d2ea;
+    --ink-muted: #7f8bab;
+
+    --bg: #f3f5fb;
+    --surface: #ffffff;
+    --surface-2: #f6f8fd;
+    --glass: rgba(255, 255, 255, .72);
+    --line: #e5e9f4;
+    --text: #0f172a;
+    --text-2: #334155;
+    --muted: #64748b;
+    --brand-text: #2f5bf0;
+    --brand-tint: rgba(59, 108, 255, .1);
+    --shadow: 0 1px 2px rgba(15, 23, 42, .04), 0 2px 8px -2px rgba(15, 23, 42, .06);
+    --shadow-hover: 0 22px 40px -18px rgba(59, 108, 255, .45), 0 8px 16px -10px rgba(15, 23, 42, .12);
+    --radius: 18px;
+
+    /* 兼容旧样式里用到的变量 */
+    --primary-color: var(--brand);
+    --primary-gradient: var(--grad);
+}
+
+html body.io-black-mode {
+    --bg: #070a12;
+    --surface: #0f1420;
+    --surface-2: #151b2b;
+    --glass: rgba(12, 16, 28, .72);
+    --line: rgba(255, 255, 255, .08);
+    --text: #eef2fb;
+    --text-2: #c5cde0;
+    --muted: #8692ad;
+    --brand-text: #8fb0ff;
+    --brand-tint: rgba(99, 140, 255, .16);
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4);
+    --shadow-hover: 0 22px 40px -18px rgba(99, 102, 241, .55), 0 8px 16px -10px rgba(0, 0, 0, .6);
+    --primary-color: #8fb0ff;
+}
+
+/* --- 基础 --- */
+html body,
+html body input,
+html body button,
+html body textarea,
+html body h1, html body h2, html body h3, html body h4,
+html body .h1, html body .h2, html body .h3, html body .h4 {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro SC", "SF Pro Text", "PingFang SC", "HarmonyOS Sans SC", "MiSans", "Microsoft YaHei", "Segoe UI", Roboto, sans-serif;
+}
+
+html body.io-grey-mode,
+html body.io-black-mode {
+    background: var(--bg);
+}
+
+/* 主内容区：默认背景（未选背景方案的页面 + 默认方案 1） */
+html body.io-grey-mode .main-content.grid-bg,
+html body.io-black-mode .main-content.grid-bg,
+html body.background-option-1.io-grey-mode .page-container .main-content.grid-bg,
+html body.background-option-1.io-black-mode .page-container .main-content.grid-bg {
+    background: var(--bg) !important;
+}
+
+html body.background-option-1 .main-content.grid-bg::before {
+    content: none;
+}
+
+html body ::selection {
+    background: rgba(59, 108, 255, .25);
+}
+
+html body ::-webkit-scrollbar-track {
+    background: transparent;
+    box-shadow: none;
+}
+
+html body ::-webkit-scrollbar-thumb {
+    background: rgba(100, 116, 139, .35);
+    box-shadow: none;
+}
+
+/* 关掉旧样式里的各种扫光/波纹/逐个弹出动画，交给下面的样式 */
+html body .url-card {
+    animation: none;
+}
+
+html body .main-content .url-card .url-body::before,
+html body .url-card .url-img::after,
+html body .btn::before,
+html body .sidebar-menu-inner a::before,
+html body .navbar-nav > li > a::before,
+html body .text-gray.text-lg::after,
+html body .header-big .word .wordsub::before,
+html body #search::after {
+    content: none !important;
+}
+
+html body .scroll-indicator {
+    background: var(--grad);
+    height: 2px;
+}
+
+/* =====================================================================
+   侧边栏：深色墨蓝（亮色/暗色模式都一样）
+   ===================================================================== */
+html body .sidebar-nav .sidebar-nav-inner,
+html body .sidebar-nav .sidebar-logo {
+    background: var(--ink);
+}
+
+html body .sidebar-nav .sidebar-nav-inner {
+    box-shadow: none;
+    border-right: 0;
+}
+
+html body .sidebar-nav .border-color,
+html body .sidebar-nav .border-bottom,
+html body .sidebar-nav .border-top {
+    border-color: var(--ink-line) !important;
+}
+
+html body .sidebar-nav .sidebar-menu-inner a,
+html body .sidebar-nav .flex-bottom a {
+    margin: 3px 10px;
+    padding-left: 12px;
+    border-radius: 12px;
+    font-weight: 500;
+    color: var(--ink-text) !important;
+    transition: background-color .2s, color .2s;
+}
+
+html body .sidebar-nav .sidebar-menu-inner a *,
+html body .sidebar-nav .flex-bottom a * {
+    color: inherit !important;
+}
+
+html body .sidebar-nav .sidebar-menu-inner a i,
+html body .sidebar-nav .flex-bottom a i {
+    color: #7dd3fc !important;
+}
+
+html body .sidebar-nav .sidebar-menu-inner a i.sidebar-more {
+    color: var(--ink-muted) !important;
+}
+
+html body .sidebar-nav .sidebar-menu-inner a:hover,
+html body .sidebar-nav .flex-bottom a:hover {
+    background: rgba(255, 255, 255, .07);
+    color: #fff !important;
+    transform: none;
+}
+
+html body .sidebar-nav .sidebar-menu-inner a:hover i,
+html body .sidebar-nav .flex-bottom a:hover i {
+    color: #fff !important;
+}
+
+/* 二级菜单与折叠后的弹出菜单 */
+html body .sidebar-nav .sidebar-menu-inner ul ul {
+    background: transparent;
+}
+
+html body .sidebar-popup.sidebar-menu-inner ul ul,
+html body .sidebar-popup.sidebar-menu-inner > div > ul > li.sidebar-item > ul {
+    background: var(--ink-2);
+    border: 1px solid var(--ink-line);
+    border-radius: 14px;
+    box-shadow: 0 16px 32px -12px rgba(0, 0, 0, .5);
+}
+
+/* =====================================================================
+   顶栏：悬浮圆角玻璃条
+   ===================================================================== */
+html body .page-header,
+html body .big-header-banner .page-header,
+html body .big-header-banner.header-bg .page-header {
+    margin: 10px 16px 0;
+    border-radius: 18px;
+    background: var(--glass);
+    -webkit-backdrop-filter: saturate(180%) blur(18px);
+    backdrop-filter: saturate(180%) blur(18px);
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 30px -18px rgba(15, 23, 42, .35);
+}
+
+html body .page-header .navbar {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+html body .page-header .navbar-nav > li > a {
+    margin: 0 2px;
+    padding: 0 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    color: var(--text-2) !important;
+    transition: background-color .2s, color .2s;
+}
+
+html body .page-header .navbar-nav > li > a *,
+html body .page-header .navbar-menu a,
+html body .page-header .navbar-menu a * {
+    color: inherit !important;
+}
+
+html body .page-header .navbar-menu a {
+    color: var(--text-2) !important;
+}
+
+html body .page-header .navbar-nav > li > a i {
+    color: var(--brand-text) !important;
+}
+
+html body .page-header .navbar-nav > li > a:hover {
+    background: var(--brand-tint);
+    color: var(--brand-text) !important;
+    transform: none;
+}
+
+html body .page-header .header-mini-btn path {
+    stroke: var(--text-2);
+}
+
+/* 有大横幅的页面，未滚动时顶栏是深色玻璃 + 白字 */
+html body .main-content:has(> .header-big) .big-header-banner:not(.header-bg) .page-header {
+    background: rgba(255, 255, 255, .06);
+    border-color: rgba(255, 255, 255, .12);
+    box-shadow: none;
+}
+
+html body .main-content:has(> .header-big) .big-header-banner:not(.header-bg) .page-header .navbar-nav > li > a,
+html body .main-content:has(> .header-big) .big-header-banner:not(.header-bg) .page-header .navbar-menu a {
+    color: rgba(255, 255, 255, .88) !important;
+}
+
+html body .main-content:has(> .header-big) .big-header-banner:not(.header-bg) .page-header .navbar-nav > li > a i {
+    color: #7dd3fc !important;
+}
+
+html body .main-content:has(> .header-big) .big-header-banner:not(.header-bg) .page-header .navbar-nav > li > a:hover {
+    background: rgba(255, 255, 255, .1);
+    color: #fff !important;
+}
+
+html body .main-content:has(> .header-big) .big-header-banner:not(.header-bg) .header-mini-btn path {
+    stroke: #fff;
+}
+
+@media (max-width: 767.98px) {
+    html body .page-header,
+    html body .big-header-banner .page-header,
+    html body .big-header-banner.header-bg .page-header {
+        margin: 8px 10px 0;
+        border-radius: 16px;
+    }
+
+    html body .page-header .navbar-brand img {
+        max-height: 34px;
+    }
+}
+
+/* =====================================================================
+   首页/群组/机器人 横幅：墨蓝底 + 极光光斑
+   ===================================================================== */
+html body .header-big.css-color,
+html body .header-big.css-color[style] {
+    background-color: var(--ink) !important;
+    background-image: radial-gradient(640px 320px at 10% 0%, rgba(34, 211, 238, .55), transparent 70%),
+    radial-gradient(760px 380px at 90% -5%, rgba(139, 92, 246, .62), transparent 70%),
+    radial-gradient(560px 300px at 55% 115%, rgba(255, 77, 141, .45), transparent 70%),
+    radial-gradient(420px 240px at 30% 80%, rgba(59, 108, 255, .35), transparent 70%) !important;
+    background-size: 100% 100% !important;
+    background-attachment: scroll !important;
+    animation: none;
+    padding-bottom: 36px;
+    margin-bottom: 2rem !important;
+    border-radius: 0 0 32px 32px;
+    overflow: hidden;
+}
+
+/* 网格纹理 */
+html body .header-big.css-color::before {
+    background: linear-gradient(rgba(255, 255, 255, .05) 1px, transparent 1px) 0 0 / 28px 28px,
+    linear-gradient(90deg, rgba(255, 255, 255, .05) 1px, transparent 1px) 0 0 / 28px 28px;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 90%);
+    mask-image: linear-gradient(to bottom, #000 0%, transparent 90%);
+}
+
+html body .header-big .url-font {
+    margin: 2.5rem auto 1.5rem;
+    max-width: 960px;
+    padding: 0 16px;
+    font-size: 2.6rem;
+    line-height: 1.25;
+    font-weight: 800;
+    letter-spacing: -.01em;
+    text-shadow: none;
+    background: linear-gradient(90deg, #ffffff 0%, #c7f3ff 45%, #d9c9ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #fff !important;
+}
+
+/* 推荐胶囊：玻璃质感 */
+html body .header-big .word .wordsub,
+html body .header-big .word .wordsub * {
+    background: transparent !important;
+}
+
+html body .header-big .word .wordsub {
+    height: 40px;
+    margin: 5px;
+    padding: 6px 16px 6px 6px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .08) !important;
+    border: 1px solid rgba(255, 255, 255, .16);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    box-shadow: none;
+    transition: background-color .2s, transform .2s, border-color .2s;
+}
+
+html body .header-big .word .wordsub:hover {
+    background: rgba(255, 255, 255, .16) !important;
+    border-color: rgba(255, 255, 255, .3);
+    transform: translateY(-2px);
+}
+
+html body .header-big .word .wordsub .wordname,
+html body.io-grey-mode .header-big .word .wordname,
+html body.io-black-mode .header-big .word .wordname {
+    color: #fff !important;
+    font-weight: 600 !important;
+    font-size: .875rem;
+}
+
+html body .header-big .word .wordicon {
+    width: 28px;
+    height: 28px;
+    margin-right: 8px;
+    border: 2px solid rgba(255, 255, 255, .25);
+}
+
+/* 搜索联想框：没有内容时不显示边框（否则横幅上会出现一条白线） */
+html body .header-big .search-hot-text {
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+}
+
+html body .header-big .search-hot-text #word {
+    background: var(--surface);
+    border-radius: 14px;
+    box-shadow: 0 16px 32px -12px rgba(15, 23, 42, .4);
+}
+
+/* 横幅里的公告 */
+html body .header-big #bulletin_box {
+    max-width: 640px;
+    margin: 10px auto 0;
+    border: 1px solid rgba(255, 255, 255, .14) !important;
+    border-radius: 999px !important;
+    background: rgba(255, 255, 255, .06) !important;
+}
+
+html body .header-big #bulletin_box,
+html body .header-big #bulletin_box * {
+    color: rgba(255, 255, 255, .8) !important;
+}
+
+@media (max-width: 767.98px) {
+    html body .header-big.css-color {
+        border-radius: 0 0 24px 24px;
+        padding-bottom: 24px;
+    }
+
+    html body .header-big .url-font {
+        font-size: 1.55rem;
+        margin: 2.5rem auto 1rem;
+    }
+
+    html body .header-big .word .wordsub {
+        height: 36px;
+        margin: 4px;
+    }
+
+    html body .header-big #bulletin_box {
+        margin: 8px 12px 0;
+        border-radius: 14px !important;
+    }
+}
+
+/* =====================================================================
+   分类标题：渐变图标块 + 粗标题
+   ===================================================================== */
+html body .text-gray.text-lg {
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: -.01em;
+    color: var(--text) !important;
+}
+
+html body .text-gray.text-lg * {
+    color: inherit !important;
+}
+
+html body .text-gray.text-lg::before {
+    content: none;
+}
+
+html body .text-gray.text-lg > i,
+html body .text-gray.text-lg > a > i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    width: 34px;
+    height: 34px;
+    margin-right: 12px !important;
+    border-radius: 11px;
+    font-size: 15px;
+    background: var(--grad);
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    -webkit-text-fill-color: #fff;
+    color: #fff !important;
+    box-shadow: 0 8px 18px -8px rgba(59, 108, 255, .7);
+}
+
+html body .text-gray.text-lg a {
+    color: var(--brand-text) !important;
+}
+
+/* =====================================================================
+   导航卡片
+   ===================================================================== */
+html body .main-content .url-card .url-body {
+    margin-bottom: 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface) !important;
+    box-shadow: var(--shadow);
+    transition: transform .22s cubic-bezier(.4, 0, .2, 1), box-shadow .22s, border-color .22s;
+}
+
+html body .main-content .url-card .url-body * {
+    background: transparent !important;
+    text-shadow: none !important;
+}
+
+/* 悬停：上浮 + 渐变描边 */
+html body .main-content .url-card .url-body:hover {
+    transform: translateY(-4px);
+    border-color: transparent;
+    background: linear-gradient(var(--surface), var(--surface)) padding-box,
+    var(--grad) border-box !important;
+    box-shadow: var(--shadow-hover);
+}
+
+html body .url-card .card-body {
+    padding: .95rem 1rem;
+}
+
+html body .main-content .url-card .url-body .url-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: var(--surface-2) !important;
+    box-shadow: 0 0 0 1px var(--line);
+}
+
+html body .url-card .url-img > img {
+    border-radius: 14px;
+    box-shadow: none;
+    transition: transform .25s;
+}
+
+html body .main-content .url-card .url-body:hover .url-img img {
+    transform: scale(1.06);
+}
+
+html body .url-card .url-info {
+    padding-right: 18px;
+}
+
+html body .url-card .url-info strong {
+    color: var(--text) !important;
+    font-weight: 700 !important;
+    font-size: .95rem;
+}
+
+html body .url-card .url-info p {
+    color: var(--muted) !important;
+    font-weight: 400 !important;
+    font-size: .78rem;
+}
+
+/* “直达”小按钮 */
+html body .main-content .url-card .url-body .togo {
+    top: 10px;
+    right: 10px;
+    width: 26px;
+    height: 26px;
+    border-radius: 9px;
+    opacity: 0;
+    background: var(--brand-tint) !important;
+    color: var(--brand-text) !important;
+    transform: none;
+}
+
+html body .main-content .url-card .url-body .togo * {
+    color: inherit !important;
+}
+
+html body .main-content .url-card .url-body:hover .togo {
+    opacity: 1;
+    transform: none;
+    background: var(--grad) !important;
+    color: #fff !important;
+}
+
+@media (hover: none) {
+    html body .main-content .url-card .url-body .togo {
+        opacity: .9;
+    }
+}
+
+/* =====================================================================
+   详情页
+   ===================================================================== */
+html body .site-content .siteico {
+    border-radius: 28px;
+    background: var(--surface-2);
+    box-shadow: 0 0 0 1px var(--line), 0 30px 50px -30px rgba(59, 108, 255, .55);
+}
+
+html body .site-name {
+    font-size: 2.1rem;
+    font-weight: 800;
+    letter-spacing: -.01em;
+    color: var(--text) !important;
+}
+
+html body .site-body p {
+    color: var(--text-2) !important;
+}
+
+html body.io-grey-mode a.btn-cat,
+html body.io-black-mode a.btn-cat {
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    background: var(--brand-tint);
+    color: var(--brand-text) !important;
+}
+
+html body.io-grey-mode a.btn-cat:hover,
+html body.io-black-mode a.btn-cat:hover {
+    background: var(--grad);
+    color: #fff !important;
+}
+
+html body .btn-arrow {
+    border: 0;
+    border-radius: 14px;
+    padding: .55rem 1.2rem;
+    font-weight: 700;
+    background: var(--grad) !important;
+    color: #fff !important;
+    box-shadow: 0 12px 24px -12px rgba(59, 108, 255, .8);
+}
+
+html body .btn-arrow * {
+    color: inherit !important;
+}
+
+html body .btn-arrow.qr-img {
+    background: var(--surface) !important;
+    color: var(--text-2) !important;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+}
+
+html body .btn-arrow:hover {
+    transform: translateY(-1px);
+}
+
+html body .btn-danger.qr-img {
+    border-radius: 14px !important;
+}
+
+html body .site-content #bulletin_box,
+html body .content-site #bulletin_box {
+    border: 1px solid var(--line) !important;
+    border-radius: 14px !important;
+    background: var(--surface) !important;
+}
+
+/* 通用卡片 / 侧栏小部件 / 友情链接 */
+html body .card {
+    border-radius: var(--radius);
+}
+
+html body .io-sidebar-widget.card,
+html body .main-content .card:not(#bulletin_box):not(.search-hot-text) {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+}
+
+html body .main-content .card .card-header {
+    background: transparent;
+    border-bottom: 1px solid var(--line);
+    font-weight: 700;
+}
+
+html body .main-content .card,
+html body .main-content .card * {
+    color: var(--text-2) !important;
+}
+
+html body .main-content .url-card .card,
+html body .main-content .url-card .card * {
+    color: inherit !important;
+}
+
+/* =====================================================================
+   右下角浮动按钮
+   ===================================================================== */
+html body #footer-tools .btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px !important;
+    background: var(--glass);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    backdrop-filter: saturate(180%) blur(14px);
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 24px -14px rgba(15, 23, 42, .5);
+    color: var(--text-2) !important;
+}
+
+html body #footer-tools .btn * {
+    color: inherit !important;
+}
+
+html body #footer-tools .btn:hover {
+    transform: translateY(-2px);
+    color: var(--brand-text) !important;
+}
+
+html body #footer-tools .switch-background {
+    background: var(--grad) !important;
+    border-color: transparent;
+    color: #fff !important;
+}
+
+/* =====================================================================
+   页脚
+   ===================================================================== */
+html body footer.main-footer .footer-text,
+html body footer.main-footer .footer-text * {
+    color: var(--muted) !important;
+    font-weight: 400;
+}
+
+html body footer.main-footer .footer-text a {
+    color: var(--brand-text) !important;
+}
+
+/* =====================================================================
+   手机端底部 tab 栏（DOM 由 content-search.js 生成）
+   ===================================================================== */
+.m-tabbar {
+    display: none;
+}
+
+@media (max-width: 767.98px) {
+    html body .m-tabbar {
+        display: flex;
+        position: fixed;
+        left: 12px;
+        right: 12px;
+        bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+        z-index: 1040;
+        height: 62px;
+        padding: 0 6px;
+        align-items: stretch;
+        border-radius: 22px;
+        background: rgba(11, 16, 32, .9);
+        -webkit-backdrop-filter: saturate(180%) blur(18px);
+        backdrop-filter: saturate(180%) blur(18px);
+        border: 1px solid rgba(255, 255, 255, .08);
+        box-shadow: 0 16px 36px -14px rgba(11, 16, 32, .6);
+    }
+
+    html body .m-tabbar a.m-tab {
+        flex: 1 1 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        min-width: 0;
+        text-decoration: none;
+        -webkit-tap-highlight-color: transparent;
+        color: var(--ink-muted) !important;
+        transition: color .2s;
+    }
+
+    html body .m-tabbar a.m-tab * {
+        color: inherit !important;
+    }
+
+    html body .m-tabbar a.m-tab i {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 46px;
+        height: 28px;
+        border-radius: 999px;
+        font-size: 18px;
+        line-height: 1;
+        transition: background-color .2s, transform .2s;
+    }
+
+    html body .m-tabbar a.m-tab span {
+        font-size: 11px;
+        line-height: 1;
+        font-weight: 600;
+        letter-spacing: .02em;
+    }
+
+    html body .m-tabbar a.m-tab:active i {
+        transform: scale(.92);
+    }
+
+    html body .m-tabbar a.m-tab.is-current {
+        color: #fff !important;
+    }
+
+    html body .m-tabbar a.m-tab.is-current i {
+        background: var(--grad);
+        box-shadow: 0 6px 16px -6px rgba(59, 108, 255, .9);
+    }
+
+    /* 给 tab 栏让出空间：内容、页脚和右下角浮动按钮都上移 */
+    html.has-m-tabbar body .main-content {
+        padding-bottom: calc(86px + env(safe-area-inset-bottom, 0px));
+    }
+
+    html.has-m-tabbar body #footer-tools {
+        bottom: calc(86px + env(safe-area-inset-bottom, 0px));
+    }
+}

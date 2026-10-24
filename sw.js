@@ -1,12 +1,15 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/7.1.0/workbox-sw.js');
 
 // 缓存版本号
-let cacheVersion = '-250227';
+let cacheVersion = '-251024';
 // 最大条目数
 const maxEntries = 1000;
 
 if (workbox) {
     console.log(`Workbox加载成功🎉`);
+    // 新版本 service worker 立即接管，不用等所有标签页关闭
+    self.skipWaiting();
+    workbox.core.clientsClaim();
     // 缓存 HTML
     workbox.routing.registerRoute(
         new RegExp('.*\.html'),
@@ -115,9 +118,12 @@ if (workbox) {
         new RegExp('.*\.(?:png|jpg|jpeg|svg|gif|webp|ico)'),
         new workbox.strategies.StaleWhileRevalidate()
     );
+    // 自有 css/js 的地址带 ?v=<内容哈希>（scripts/update_assets.py），内容变了就是新地址
     workbox.routing.registerRoute(
         new RegExp('.*\.(css|js)'),
-        new workbox.strategies.StaleWhileRevalidate()
+        new workbox.strategies.StaleWhileRevalidate({
+            cacheName: 'static' + cacheVersion,
+        })
     );
 
     // 默认匹配剩下的请求
@@ -127,6 +133,17 @@ if (workbox) {
             networkTimeoutSeconds: 3,
         })
     );
+
+    // 清理旧版本的缓存（包括早期未命名的 workbox-runtime 缓存）
+    self.addEventListener('activate', function (event) {
+        event.waitUntil(caches.keys().then(function (keys) {
+            return Promise.all(keys.filter(function (key) {
+                return !key.endsWith(cacheVersion);
+            }).map(function (key) {
+                return caches.delete(key);
+            }));
+        }));
+    });
 
 } else {
     console.log(`Workbox加载失败😬`);
