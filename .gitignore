@@ -50,3 +50,6 @@ start-server.sh
 /generate_sitemap_advanced.py
 /SITEMAP_README.md
 /STYLE_OPTIMIZATION_README.md
+
+# Cloudflare wrangler 本地缓存
+.wrangler/
