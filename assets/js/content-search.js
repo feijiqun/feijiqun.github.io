@@ -90,4 +90,70 @@ $(function () {
         $('#word').hide();
     })
 
-})
+});
+
+//手机端底部 tab 栏（全站共享，样式见 custom-style.css 的 .m-tabbar）
+(function () {
+    var tabs = [
+        {key: 'channel', href: '/', icon: 'fa-brands fa-telegram', text: '频道'},
+        {key: 'group', href: '/group/', icon: 'fa-solid fa-user-group', text: '群组'},
+        {key: 'robot', href: '/robot/', icon: 'fa-solid fa-robot', text: '机器人'},
+        {key: 'enroll', href: '/enroll/', icon: 'fa-solid fa-circle-plus', text: '收录'},
+        {key: 'about', href: '/about/', icon: 'fa-solid fa-circle-info', text: '关于'}
+    ];
+
+    function currentKey() {
+        var path = location.pathname;
+        if (/^\/group(\/|$)/.test(path)) return 'group';
+        if (/^\/robot(\/|$)/.test(path)) return 'robot';
+        if (/^\/enroll(\/|$)/.test(path)) return 'enroll';
+        if (/^\/about(\/|$)/.test(path)) return 'about';
+        if (/^\/detail\//.test(path)) {
+            //详情页按所属分类（第一个分类按钮）高亮
+            var cat = document.querySelector('.site-body .btn-cat');
+            var href = cat ? cat.getAttribute('href') || '' : '';
+            if (/^\/group/.test(href)) return 'group';
+            if (/^\/robot/.test(href)) return 'robot';
+            return 'channel';
+        }
+        if (path === '/' || /^\/(index\.html|p2|categories|tags)(\/|$)/.test(path)) return 'channel';
+        return '';
+    }
+
+    //竖屏时让页面延伸到 iPhone 底部安全区，tab 栏再用 env(safe-area-inset-bottom) 让开
+    function syncViewportFit() {
+        var meta = document.querySelector('meta[name=viewport]');
+        if (!meta) return;
+        var content = meta.getAttribute('content').replace(/,\s*viewport-fit=\w+/, '');
+        if (window.matchMedia('(orientation: portrait)').matches) content += ',viewport-fit=cover';
+        meta.setAttribute('content', content);
+    }
+
+    function render() {
+        if (document.querySelector('.m-tabbar')) return;
+        var active = currentKey();
+        var nav = document.createElement('nav');
+        nav.className = 'm-tabbar';
+        nav.setAttribute('aria-label', '底部导航');
+        nav.innerHTML = tabs.map(function (t) {
+            var on = t.key === active;
+            return '<a class="m-tab' + (on ? ' is-current' : '') + '" href="' + t.href + '"' +
+                (on ? ' aria-current="page"' : '') + '><i class="' + t.icon + '"></i><span>' + t.text + '</span></a>';
+        }).join('');
+        document.body.appendChild(nav);
+        document.documentElement.classList.add('has-m-tabbar');
+    }
+
+    function init() {
+        syncViewportFit();
+        var portrait = window.matchMedia('(orientation: portrait)');
+        if (portrait.addEventListener) portrait.addEventListener('change', syncViewportFit);
+        render();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
