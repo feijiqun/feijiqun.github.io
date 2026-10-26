@@ -386,25 +386,62 @@ html body .header-big #bulletin_box * {
     color: rgba(255, 255, 255, .8) !important;
 }
 
+/* 手机端：紧凑横幅（小标题 + 一行可横滑的推荐胶囊 + 细公告条） */
 @media (max-width: 767.98px) {
-    html body .header-big.css-color {
-        border-radius: 0 0 24px 24px;
-        padding-bottom: 24px;
+    html body .header-big.css-color,
+    html body .header-big.css-color[style] {
+        border-radius: 0 0 22px 22px;
+        padding-bottom: 14px;
+        margin-bottom: 1.25rem !important;
     }
 
     html body .header-big .url-font {
-        font-size: 1.55rem;
-        margin: 2.5rem auto 1rem;
+        font-size: 1.12rem;
+        line-height: 1.45;
+        margin: 2.25rem auto .5rem;
+        letter-spacing: 0;
+    }
+
+    html body .header-big .word {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        margin: 4px 0 0;
+        padding: 2px 12px 4px;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    html body .header-big .word::-webkit-scrollbar {
+        display: none;
     }
 
     html body .header-big .word .wordsub {
-        height: 36px;
-        margin: 4px;
+        flex: none;
+        height: 32px;
+        margin: 0 6px 0 0;
+        padding: 4px 12px 4px 4px;
+    }
+
+    html body .header-big .word .wordicon {
+        width: 22px;
+        height: 22px;
+        margin-right: 6px;
+    }
+
+    html body .header-big .word .wordsub .wordname {
+        font-size: .8rem;
     }
 
     html body .header-big #bulletin_box {
         margin: 8px 12px 0;
-        border-radius: 14px !important;
+        border-radius: 12px !important;
+    }
+
+    html body .header-big #bulletin_box .card-body {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        font-size: 12px;
     }
 }
 
