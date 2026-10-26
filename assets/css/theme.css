@@ -697,22 +697,24 @@ html body footer.main-footer .footer-text a {
 }
 
 @media (max-width: 767.98px) {
+    /* 贴底整条：底部安全区由 tab 栏自身的 padding 填满 */
     html body .m-tabbar {
         display: flex;
         position: fixed;
-        left: 12px;
-        right: 12px;
-        bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+        left: 0;
+        right: 0;
+        bottom: 0;
         z-index: 1040;
-        height: 62px;
-        padding: 0 6px;
+        height: calc(60px + env(safe-area-inset-bottom, 0px));
+        padding: 0 6px env(safe-area-inset-bottom, 0px);
         align-items: stretch;
-        border-radius: 22px;
-        background: rgba(11, 16, 32, .9);
+        border-radius: 0;
+        background: rgba(11, 16, 32, .92);
         -webkit-backdrop-filter: saturate(180%) blur(18px);
         backdrop-filter: saturate(180%) blur(18px);
-        border: 1px solid rgba(255, 255, 255, .08);
-        box-shadow: 0 16px 36px -14px rgba(11, 16, 32, .6);
+        border: 0;
+        border-top: 1px solid rgba(255, 255, 255, .08);
+        box-shadow: 0 -8px 24px -16px rgba(11, 16, 32, .5);
     }
 
     html body .m-tabbar a.m-tab {
@@ -767,10 +769,10 @@ html body footer.main-footer .footer-text a {
 
     /* 给 tab 栏让出空间：内容、页脚和右下角浮动按钮都上移 */
     html.has-m-tabbar body .main-content {
-        padding-bottom: calc(86px + env(safe-area-inset-bottom, 0px));
+        padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
     }
 
     html.has-m-tabbar body #footer-tools {
-        bottom: calc(86px + env(safe-area-inset-bottom, 0px));
+        bottom: calc(76px + env(safe-area-inset-bottom, 0px));
     }
 }
