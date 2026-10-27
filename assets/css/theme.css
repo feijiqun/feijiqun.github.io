@@ -238,28 +238,28 @@ html body .page-header .header-mini-btn path {
     stroke: var(--text-2);
 }
 
-/* 有大横幅的页面，未滚动时顶栏是深色玻璃 + 白字 */
-html body .main-content:has(> .header-big) .big-header-banner:not(.header-bg) .page-header {
+/* 暗色模式下有大横幅的页面，未滚动时顶栏是深色玻璃 + 白字 */
+html body.io-black-mode .main-content:has(> .header-big) .big-header-banner:not(.header-bg) .page-header {
     background: rgba(255, 255, 255, .06);
     border-color: rgba(255, 255, 255, .12);
     box-shadow: none;
 }
 
-html body .main-content:has(> .header-big) .big-header-banner:not(.header-bg) .page-header .navbar-nav > li > a,
-html body .main-content:has(> .header-big) .big-header-banner:not(.header-bg) .page-header .navbar-menu a {
+html body.io-black-mode .main-content:has(> .header-big) .big-header-banner:not(.header-bg) .page-header .navbar-nav > li > a,
+html body.io-black-mode .main-content:has(> .header-big) .big-header-banner:not(.header-bg) .page-header .navbar-menu a {
     color: rgba(255, 255, 255, .88) !important;
 }
 
-html body .main-content:has(> .header-big) .big-header-banner:not(.header-bg) .page-header .navbar-nav > li > a i {
+html body.io-black-mode .main-content:has(> .header-big) .big-header-banner:not(.header-bg) .page-header .navbar-nav > li > a i {
     color: #7dd3fc !important;
 }
 
-html body .main-content:has(> .header-big) .big-header-banner:not(.header-bg) .page-header .navbar-nav > li > a:hover {
+html body.io-black-mode .main-content:has(> .header-big) .big-header-banner:not(.header-bg) .page-header .navbar-nav > li > a:hover {
     background: rgba(255, 255, 255, .1);
     color: #fff !important;
 }
 
-html body .main-content:has(> .header-big) .big-header-banner:not(.header-bg) .header-mini-btn path {
+html body.io-black-mode .main-content:has(> .header-big) .big-header-banner:not(.header-bg) .header-mini-btn path {
     stroke: #fff;
 }
 
@@ -724,6 +724,124 @@ html body footer.main-footer .footer-text * {
 
 html body footer.main-footer .footer-text a {
     color: var(--brand-text) !important;
+}
+
+/* =====================================================================
+   亮色模式：侧栏、横幅都用浅色（上面的深色墨蓝只留给暗色模式）
+   ===================================================================== */
+html body:not(.io-black-mode) {
+    --ink: #ffffff;
+    --ink-2: #ffffff;
+    --ink-line: #e8ecf5;
+    --ink-text: #334155;
+    --ink-muted: #94a3b8;
+}
+
+html body:not(.io-black-mode) .sidebar-nav .sidebar-nav-inner {
+    border-right: 1px solid var(--line);
+}
+
+html body:not(.io-black-mode) .sidebar-nav .sidebar-menu-inner a i,
+html body:not(.io-black-mode) .sidebar-nav .flex-bottom a i {
+    color: var(--brand) !important;
+}
+
+html body:not(.io-black-mode) .sidebar-nav .sidebar-menu-inner a i.sidebar-more {
+    color: var(--ink-muted) !important;
+}
+
+html body:not(.io-black-mode) .sidebar-nav .sidebar-menu-inner a:hover,
+html body:not(.io-black-mode) .sidebar-nav .flex-bottom a:hover,
+html body:not(.io-black-mode) .sidebar-nav .sidebar-menu-inner a:hover i,
+html body:not(.io-black-mode) .sidebar-nav .flex-bottom a:hover i {
+    color: var(--brand-text) !important;
+}
+
+html body:not(.io-black-mode) .sidebar-nav .sidebar-menu-inner a:hover,
+html body:not(.io-black-mode) .sidebar-nav .flex-bottom a:hover {
+    background: var(--brand-tint);
+}
+
+html body:not(.io-black-mode) .sidebar-popup.sidebar-menu-inner ul ul,
+html body:not(.io-black-mode) .sidebar-popup.sidebar-menu-inner > div > ul > li.sidebar-item > ul {
+    box-shadow: 0 16px 32px -14px rgba(15, 23, 42, .25);
+}
+
+/* 浅色横幅：淡蓝底 + 柔和光斑 */
+html body:not(.io-black-mode) .header-big.css-color,
+html body:not(.io-black-mode) .header-big.css-color[style] {
+    background-color: #edf2ff !important;
+    background-image: radial-gradient(640px 320px at 10% 0%, rgba(34, 211, 238, .28), transparent 70%),
+    radial-gradient(760px 380px at 90% -5%, rgba(139, 92, 246, .26), transparent 70%),
+    radial-gradient(560px 300px at 55% 115%, rgba(255, 77, 141, .16), transparent 70%) !important;
+    border-bottom: 1px solid var(--line);
+}
+
+html body:not(.io-black-mode) .header-big.css-color::before {
+    background: linear-gradient(rgba(15, 23, 42, .045) 1px, transparent 1px) 0 0 / 28px 28px,
+    linear-gradient(90deg, rgba(15, 23, 42, .045) 1px, transparent 1px) 0 0 / 28px 28px;
+}
+
+html body:not(.io-black-mode) .header-big .url-font {
+    background: linear-gradient(90deg, #0f172a 0%, #2f5bf0 55%, #7c3aed 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+html body:not(.io-black-mode) .header-big .word .wordsub {
+    background: rgba(255, 255, 255, .8) !important;
+    border-color: var(--line);
+    box-shadow: 0 6px 16px -10px rgba(15, 23, 42, .3);
+}
+
+html body:not(.io-black-mode) .header-big .word .wordsub:hover {
+    background: #fff !important;
+    border-color: rgba(59, 108, 255, .35);
+}
+
+html body:not(.io-black-mode) .header-big .word .wordsub .wordname {
+    color: var(--text) !important;
+}
+
+html body:not(.io-black-mode) .header-big .word .wordicon {
+    border-color: rgba(15, 23, 42, .08);
+}
+
+html body:not(.io-black-mode) .header-big #bulletin_box {
+    background: rgba(255, 255, 255, .65) !important;
+    border-color: var(--line) !important;
+}
+
+html body:not(.io-black-mode) .header-big #bulletin_box,
+html body:not(.io-black-mode) .header-big #bulletin_box * {
+    color: var(--text-2) !important;
+}
+
+/* 亮色模式的手机 tab 栏：白色毛玻璃 */
+@media (max-width: 767.98px) {
+    html body:not(.io-black-mode) .m-tabbar {
+        background: rgba(255, 255, 255, .94);
+        border-top-color: var(--line);
+        box-shadow: 0 -8px 24px -18px rgba(15, 23, 42, .35);
+    }
+
+    html body:not(.io-black-mode) .m-tabbar a.m-tab {
+        color: var(--muted) !important;
+    }
+
+    html body:not(.io-black-mode) .m-tabbar a.m-tab.is-current {
+        color: var(--brand-text) !important;
+    }
+
+    html body:not(.io-black-mode) .m-tabbar a.m-tab.is-current i {
+        color: #fff !important;
+    }
+}
+
+/* 访问统计：计数服务没返回数据时不显示“本站总访问量：次”这种空行，
+   不蒜子成功后会把容器设为 display:inline */
+#busuanzi_container_site_pv {
+    display: none;
 }
 
 /* =====================================================================
