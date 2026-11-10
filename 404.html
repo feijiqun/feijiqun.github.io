@@ -41,6 +41,11 @@
     <script>navigator.serviceWorker != null && navigator.serviceWorker.register("/sw.js").then(function (e) {
         console.log("Registered events at scope: ", e.scope)
     })</script>
+    <script>(function () {
+        // 旧卡片链接形如 /detail/<用户名>/%20data-id，跳回正确的详情页
+        var m = location.pathname.match(/^(\/detail\/[^\/]+\/)(%20|\s)data-id\/?$/);
+        m && location.replace(m[1] + location.search + location.hash)
+    })()</script>
 </head>
 <body>
 <div class=headercontent>

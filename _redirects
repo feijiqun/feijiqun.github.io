@@ -1,0 +1,3 @@
+# 旧卡片链接把 " data-id" 写进了 href，浏览器会访问 /detail/<用户名>/%20data-id
+/detail/:name/%20data-id /detail/:name/ 301
+/detail/:name/%20data-id/ /detail/:name/ 301

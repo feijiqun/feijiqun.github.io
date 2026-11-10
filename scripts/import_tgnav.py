@@ -52,7 +52,7 @@ CATEGORY_MAP = {
 DEFAULT_SECTION = '闲聊吹水'
 
 CARD = '''                <div class="url-card col-6 col-sm-6 col-md-4 col-xl-5a col-xxl-6a">
-                    <div class="url-body default"><a href="/detail/{u}/ data-id" data-url="{u}" data-toggle="tooltip" data-placement="bottom" data-original-title="{desc}">
+                    <div class="url-body default"><a href="/detail/{u}/" data-id data-url="{u}" data-toggle="tooltip" data-placement="bottom" data-original-title="{desc}">
                         <div class="card-body">
                             <div class="url-content d-flex align-items-center">
                                 <div class="url-img mr-2 d-flex align-items-center justify-content-center"><img class="lazy" src="/assets/images/loading.gif" data-src="https://t.me/i/userpic/160/{u}.jpg" onerror='this.src="/assets/images/default.jpg"'
